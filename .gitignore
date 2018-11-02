@@ -9,3 +9,20 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+# Projectile
+projectile-bookmarks.eld
+projectile.cache
+
+# Emacs package
+elpa/
+
+# Emacs tmp file
+\#*\#
+.\#*
+
+# Emacs config file
+recentf
+
+# Emacs eshell data
+eshell/
