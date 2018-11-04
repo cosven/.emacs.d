@@ -21,11 +21,19 @@
   (setq alert-default-style 'notifier)
   )
 
-(org-babel-do-load-languages 'org-babel-load-languages
+;; TODO: 代码有点丑
+(if (version< emacs-version "26.0")
+    (org-babel-do-load-languages 'org-babel-load-languages
                              '((python . t)
-                               (shell . t)  ;; emacs >= 26
                                (C . t)
-                               (plantuml . t)))
+                               (plantuml . t)
+                               (sh . t)))
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               '((shell . t)
+                                 (python . t)
+                                 (C . t)
+                                 (plantuml . t))))
+
 
 ;; org
 (global-set-key "\C-cl" 'org-store-link)

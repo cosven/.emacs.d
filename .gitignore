@@ -29,3 +29,6 @@ eshell/
 
 # pyim
 pyim
+
+# vim tmp file
+*.sw[p,o]
