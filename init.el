@@ -24,6 +24,8 @@
 (require 'init-defaults)
 (require 'init-ui)
 (require 'init-common-packages)
+(require 'init-themes)
+(require 'init-lang)
 (require 'init-ivy-family)
 (require 'init-projectile)
 (require 'init-web)
@@ -32,6 +34,7 @@
 (require 'init-org)
 (require 'init-awesome-tab)
 (require 'init-diminish)
+(require 'init-keybindings)
 
 ;; person use
 (global-set-key (kbd "C-c e")
@@ -59,3 +62,4 @@
 ;; End:
 
 ;;; init.el ends here
+(put '2C-associate-buffer 'disabled t)
