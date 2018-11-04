@@ -21,19 +21,14 @@
   (setq alert-default-style 'notifier)
   )
 
-;; TODO: 代码有点丑
-(if (version< emacs-version "26.0")
-    (org-babel-do-load-languages 'org-babel-load-languages
-                             '((python . t)
-                               (C . t)
-                               (plantuml . t)
-                               (sh . t)))
-  (org-babel-do-load-languages 'org-babel-load-languages
-                               '((shell . t)
-                                 (python . t)
-                                 (C . t)
-                                 (plantuml . t))))
-
+(let ((babel-languages
+              '((python . t)
+                (C . t)
+                (plantuml . t))))
+  (if (version< emacs-version "26.0")
+      (map-put babel-languages 'sh t)
+    (map-put babel-languages 'shell t))
+  (org-babel-do-load-languages 'org-babel-load-languages babel-languages))
 
 ;; org
 (global-set-key "\C-cl" 'org-store-link)
