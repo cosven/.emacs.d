@@ -13,7 +13,7 @@
 ;; emacs ipython notebook
 (use-package ein :ensure t)
 
-(use-package flycheck-pycheckers :ensure t)
+; (use-package flycheck-pycheckers :ensure t)
 
 (defun org-babel-execute:python2 (body params)
   "Execute BODY by python2 with PARAMS."
@@ -47,8 +47,8 @@
           (lambda ()
             (local-set-key [f5] 'run-py)
             (local-set-key (kbd "C-x C-e") 'py-send-line)))
-(with-eval-after-load 'flycheck
-  (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
+;; (with-eval-after-load 'flycheck
+;;   (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
 
 (provide 'init-python)
 ;;; init-python ends here
