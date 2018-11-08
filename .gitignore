@@ -27,6 +27,9 @@ recentf
 # Emacs eshell data
 eshell/
 
+# Emacs anaconda data
+anaconda-mode/
+
 # pyim
 pyim
 

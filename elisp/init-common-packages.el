@@ -103,10 +103,16 @@
 (use-package all-the-icons
   :ensure t)
 
-(use-package git-gutter
-  :ensure t
+;; 没有在维护了
+;; (use-package git-gutter
+;;   :ensure t
+;;   :config
+;;   (global-git-gutter-mode))
+;;
+
+(use-package diff-hl :ensure t
   :config
-  (global-git-gutter-mode))
+  (diff-hl-mode))
 
 (use-package pyim
   :ensure t
@@ -151,6 +157,12 @@
   :bind
   (("M-j" . pyim-convert-code-at-point) ;与 pyim-probe-dynamic-english 配合
    ("C-;" . pyim-delete-word-from-personal-buffer)))
+
+;; (use-package cnfonts
+;;   :ensure t
+;;   :config
+;;   (cnfonts-enable))
+;;
 
 (provide 'init-common-packages)
 ;;; init-common-packages ends here

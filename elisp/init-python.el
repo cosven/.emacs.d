@@ -1,4 +1,5 @@
 
+(require 'subr-x)
 
 ;;; Code:
 
@@ -29,6 +30,14 @@
    (format "%s %s" python-shell-interpreter
            (buffer-file-name (current-buffer)))))
 
+(defun py-send-line()
+  "将当前行发送到 python shell.
+
+发送前会对删除前后空格，主要使用场景是将 doctest 代码发送到 shell 进行测试。"
+  (interactive)
+  (python-shell-send-string (string-trim (thing-at-point 'line)))
+  )
+
 (eval-after-load "company"
                  '(add-to-list 'company-backends 'company-anaconda))
 
@@ -36,8 +45,8 @@
 (add-hook 'python-mode-hook #'hs-minor-mode)
 (add-hook 'python-mode-hook
           (lambda ()
-            (local-set-key (kbd "C-c C-p") 'counsel-projectile)
-            (local-set-key [f5] 'run-py)))
+            (local-set-key [f5] 'run-py)
+            (local-set-key (kbd "C-x C-e") 'py-send-line)))
 (with-eval-after-load 'flycheck
   (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
 

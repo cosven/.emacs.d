@@ -28,6 +28,7 @@
 (require 'init-lang)
 (require 'init-ivy-family)
 (require 'init-projectile)
+(require 'init-python)
 (require 'init-web)
 (require 'init-evil)
 (require 'init-fuo)
