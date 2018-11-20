@@ -66,13 +66,9 @@
   :ensure t
   :init
   (setq aw-scope 'frame)
-  :config
-  (global-set-key (kbd "M-o") 'ace-window))
+  )
 
 (use-package goto-chg
-  :ensure t)
-
-(use-package diminish
   :ensure t)
 
 (use-package eyebrowse
@@ -80,7 +76,7 @@
   :init
   (setq-default eyebrowse-mode-line-style t)
   :config
-  (eyebrowse-mode t)
+  (eyebrowse-mode nil)
   (eyebrowse-setup-opinionated-keys))
 
 (use-package writeroom-mode
@@ -112,7 +108,7 @@
 
 (use-package diff-hl :ensure t
   :config
-  (diff-hl-mode))
+  (global-diff-hl-mode 1))
 
 (use-package pyim
   :ensure t
@@ -157,6 +153,13 @@
   :bind
   (("M-j" . pyim-convert-code-at-point) ;与 pyim-probe-dynamic-english 配合
    ("C-;" . pyim-delete-word-from-personal-buffer)))
+
+;;(use-package highlight-indent-guides
+;;  :ensure t
+;;  :config
+;;  (setq highlight-indent-guides-method 'character)
+;;  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+;;  )
 
 ;; (use-package cnfonts
 ;;   :ensure t

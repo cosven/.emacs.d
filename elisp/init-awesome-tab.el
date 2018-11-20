@@ -5,8 +5,9 @@
 (use-package awesome-tab
   :config
   ;; (awesome-tab-mode)
-  (global-set-key [f3] 'awesome-tab-backward)
-  (global-set-key [f4] 'awesome-tab-forward))
+  ;; (global-set-key [f3] 'awesome-tab-backward)
+  ;; (global-set-key [f4] 'awesome-tab-forward)
+  )
 
 (custom-set-faces
  '(awesome-tab-selected

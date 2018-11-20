@@ -33,6 +33,9 @@
   (init-ui-look))
 
 (add-hook 'after-make-frame-functions 'cb-after-make-frame)
+(when (eq system-type 'darwin)
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
+;; (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
 (provide 'init-ui)
 ;;; init-ui ends here

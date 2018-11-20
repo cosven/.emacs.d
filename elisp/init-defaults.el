@@ -18,11 +18,9 @@
 (setq-default c-default-style "linux"
               c-basic-offset 4)
 (setq confirm-kill-emacs 'y-or-n-p)
-;; (setq-default python-shell-interpreter "python3")
 (setq-default org-babel-python-command "python3")
 (setq-default org-babel-sh-command "bash")
 (setq-default make-backup-files nil)
-(setq-default which-func-unknown "N/A")
 (setq-default org-babel-python2-command "python")
 
 ;; Enable mouse support
@@ -36,7 +34,7 @@
 (xterm-mouse-mode 1)
 (electric-pair-mode -1)
 (show-paren-mode 1)
-(which-function-mode nil)
+(which-function-mode -1)
 
 (when (eq system-type 'darwin) ;; mac specific settings
   (progn
