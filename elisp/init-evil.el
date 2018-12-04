@@ -38,8 +38,6 @@
               (define-key evil-insert-state-map (kbd "\C-v") 'scroll-up-command)
               (define-key evil-insert-state-map (kbd "\C-y") 'yank)
 
-              (define-key evil-normal-state-map (kbd "\C-p") 'projectile-find-file)
-
               (setq-default evil-insert-state-cursor 'box)
               (modify-syntax-entry ?_ "w")))
   :config

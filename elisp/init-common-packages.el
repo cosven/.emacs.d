@@ -74,7 +74,7 @@
 (use-package eyebrowse
   :ensure t
   :init
-  (setq-default eyebrowse-mode-line-style t)
+  (setq eyebrowse-mode-line-style t)
   :config
   (eyebrowse-mode nil)
   (eyebrowse-setup-opinionated-keys))

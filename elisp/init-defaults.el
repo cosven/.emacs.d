@@ -10,7 +10,8 @@
 ;; (setq-default python-shell-completion-native-enable nil)
 (setq-default help-window-select t)
 (setq vc-follow-symlinks t)
-(setq-default org-agenda-files '("~/Dropbox/life"))
+(setq-default org-agenda-files '("~/Dropbox/life"
+                                 "~/Dropbox/public"))
 (setq-default imenu-list-focus-after-activation t)
 (setq-default imenu-list-size 35)
 (setq-default org-log-done 'time)
@@ -39,9 +40,6 @@
 (when (eq system-type 'darwin) ;; mac specific settings
   (progn
     (setq mac-option-modifier 'meta)
-    ;; daemon mode
-    (setq mac-command-modifier 'meta))
-  (when (display-graphic-p)
     (setq mac-command-modifier 'meta))
   (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
   )

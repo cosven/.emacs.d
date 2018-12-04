@@ -42,10 +42,12 @@
   (lambda ()
     (interactive)  ;; interactive can turn a function to a command
     (find-file user-init-file)))
-(global-set-key (kbd "C-c t")
-  (lambda ()
-    (interactive)  ;; interactive can turn a function to a command
-    (find-file "~/Dropbox/life/life_tracking.org")))
+
+(defun mwiki ()
+  "Find my wiki index org file."
+  (interactive)
+  (find-file "jk~/Dropbox/public/index.org"))
+(global-set-key (kbd "C-c t") 'mwiki)
 
 (setq custom-file "~/.emacs-custom.el")
 (when (file-exists-p custom-file)
