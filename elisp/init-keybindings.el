@@ -15,5 +15,18 @@
 
 (global-set-key (kbd "M-o") 'other-window)
 
+;; personal use case
+(global-set-key (kbd "C-c e")
+  (lambda ()
+    (interactive)  ;; interactive can turn a function to a command
+    (find-file user-init-file)))
+
+(defun mwiki ()
+  "Find my wiki index org file."
+  (interactive)
+  (find-file "~/Dropbox/public/index.org"))
+(global-set-key (kbd "C-c t") 'mwiki)
+
+
 (provide 'init-keybindings)
 ;;; init-keybindings ends here

@@ -21,6 +21,7 @@
 (require-or-install-pkg 'use-package)
 (setq use-package-verbose t)
 
+(require 'init-simple)
 (require 'init-defaults)
 (require 'init-ui)
 (require 'init-common-packages)
@@ -37,18 +38,7 @@
 (require 'init-diminish)
 (require 'init-keybindings)
 
-;; person use
-(global-set-key (kbd "C-c e")
-  (lambda ()
-    (interactive)  ;; interactive can turn a function to a command
-    (find-file user-init-file)))
-
-(defun mwiki ()
-  "Find my wiki index org file."
-  (interactive)
-  (find-file "jk~/Dropbox/public/index.org"))
-(global-set-key (kbd "C-c t") 'mwiki)
-
+(server-start)
 (setq custom-file "~/.emacs-custom.el")
 (when (file-exists-p custom-file)
   (load custom-file))

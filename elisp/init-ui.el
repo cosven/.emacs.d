@@ -32,7 +32,9 @@
   "Callback of after a FRAME made."
   (init-ui-look))
 
-(add-hook 'after-make-frame-functions 'cb-after-make-frame)
+;; 这个配置会让 terminal 模式下的 emacs 渲染不正常！
+;; (add-hook 'after-make-frame-functions 'cb-after-make-frame)
+
 (when (eq system-type 'darwin)
 ;;  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
   (add-to-list 'default-frame-alist '(ns-appearance . dark)))
