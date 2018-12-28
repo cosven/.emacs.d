@@ -74,7 +74,7 @@
 (use-package eyebrowse
   :ensure t
   :init
-  (setq eyebrowse-mode-line-style t)
+  (setq eyebrowse-mode-line-style nil)
   :config
   (eyebrowse-mode nil)
   (eyebrowse-setup-opinionated-keys))
@@ -153,6 +153,9 @@
   :bind
   (("M-j" . pyim-convert-code-at-point) ;与 pyim-probe-dynamic-english 配合
    ("C-;" . pyim-delete-word-from-personal-buffer)))
+
+(use-package go-mode
+  :ensure t)
 
 ;;(use-package highlight-indent-guides
 ;;  :ensure t

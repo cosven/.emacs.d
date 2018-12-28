@@ -9,6 +9,9 @@
 ;; emacs ipython notebook
 (use-package ein :ensure t)
 
+;; pydoc
+(use-package pydoc :ensure t)
+
 ; (use-package flycheck-pycheckers :ensure t)
 
 (defun org-babel-execute:python2 (body params)
@@ -50,7 +53,10 @@
 (add-hook 'python-mode-hook
           (lambda ()
             (local-set-key [f5] 'run-py)
-            (local-set-key (kbd "C-x C-e") 'py-send-line)))
+            (local-set-key (kbd "C-x C-e") 'py-send-line)
+            ;; this may override eldoc shortcut
+            (local-set-key (kbd "C-c C-f") 'pydoc)
+            ))
 
 ;; (with-eval-after-load 'flycheck
 ;;   (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
