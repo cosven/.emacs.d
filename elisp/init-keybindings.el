@@ -8,6 +8,11 @@
 (global-set-key (kbd "M-m p") 'projectile-command-map)
 (global-set-key (kbd "M-m g") 'magit-dispatch-popup)
 
+;; M-m t 应该为 term 相关命令的前缀
+(global-set-key (kbd "M-m t t") 'multi-term-dedicated-toggle)
+(global-set-key (kbd "M-m t n") 'multi-term-next)
+(global-set-key (kbd "M-m t p") 'multi-term-prev)
+
 ;; Emacs 工作流：frame vs window
 ;; http://ergoemacs.org/emacs/emacs_effective_windows_management.html
 (global-set-key (kbd "C-M-o") 'other-frame)

@@ -2,11 +2,11 @@
 
 ;;; Code:
 
-(use-package awesome-tab
-  :config
-  ;; (awesome-tab-mode)
-  )
-
+;; (use-package awesome-tab
+;;   :config
+;;   ;; (awesome-tab-mode)
+;;   )
+;;
 (custom-set-faces
  '(awesome-tab-selected
    ((t

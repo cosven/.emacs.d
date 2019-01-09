@@ -34,7 +34,8 @@
    :ensure t
    :init
    (when (memq window-system '(mac ns x))
-     (exec-path-from-shell-initialize)))
+     (exec-path-from-shell-initialize)
+     ))
 
 
 (use-package fzf
@@ -170,17 +171,37 @@
 ;;   (cnfonts-enable))
 ;;
 
-;; (use-package multi-term
-;;   :ensure t
-;;   :config
-;;   ;; /bin/bash --login 命令可以启动 login shell
-;;   ;; login shell vs non-login shell: https://unix.stackexchange.com/a/46856
-;;   (setq multi-term-program "/bin/bash")
-;;   (setq multi-term-program-switches nil)
-;;   (global-set-key (kbd "M-m t t") 'multi-term-dedicated-toggle)
-;;   (global-set-key (kbd "M-m t n") 'multi-term-next)
-;;   (global-set-key (kbd "M-m t p") 'multi-term-prev)
-;;   )
+(use-package multi-term
+  :ensure t
+  :config
+  ;; /bin/bash --login 命令可以启动 login shell
+  ;; login shell vs non-login shell: https://unix.stackexchange.com/a/46856
+  (setq multi-term-program "/bin/bash")
+  (setq multi-term-program-switches nil)
+
+  ;; multi-term 默认配置中将 ESC 键给 unbind 了，
+  ;; 这会影响 vim 使用。
+  (custom-set-variables
+   '(term-unbind-key-list
+     '("C-z" "C-x" "C-c" "C-h" "M-x" "M-m")))
+
+  ;; 设置一些常见的 shell 快捷键，在默认的 term 模式中，
+  ;; M-d, M-DEL 等组合键都不生效。
+  (custom-set-variables
+   '(term-bind-key-alist
+     '(
+       ("C-c C-c" . term-interrupt-subjob)
+       ("C-c C-j" . term-line-mode)
+       ;; 这样可以访问系统粘贴板的内容
+       ;; C-y 在 multi-term 源码中也有特意绑定 term-paste
+       ("C-y" . term-paste)
+       ("<kp-delete>" . term-send-del)
+       ("M-f" . term-send-forward-word)
+       ("M-b" . term-send-backward-word)
+       ("M-DEL" . term-send-backward-kill-word)
+       ("M-d" . term-send-forward-kill-word)
+       )))
+  )
 
 (provide 'init-common-packages)
 ;;; init-common-packages ends here
