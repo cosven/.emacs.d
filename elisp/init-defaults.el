@@ -44,5 +44,6 @@
   (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
   )
 
+
 (provide 'init-defaults)
 ;;; init-defaults ends here

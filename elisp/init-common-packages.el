@@ -170,14 +170,17 @@
 ;;   (cnfonts-enable))
 ;;
 
-(use-package multi-term
-  :ensure t
-  :config
-  ;; /bin/bash --login 命令可以启动 login shell
-  ;; login shell vs non-login shell: https://unix.stackexchange.com/a/46856
-  (setq multi-term-program "/bin/bash")
-  (setq multi-term-program-switches nil)
-  )
+;; (use-package multi-term
+;;   :ensure t
+;;   :config
+;;   ;; /bin/bash --login 命令可以启动 login shell
+;;   ;; login shell vs non-login shell: https://unix.stackexchange.com/a/46856
+;;   (setq multi-term-program "/bin/bash")
+;;   (setq multi-term-program-switches nil)
+;;   (global-set-key (kbd "M-m t t") 'multi-term-dedicated-toggle)
+;;   (global-set-key (kbd "M-m t n") 'multi-term-next)
+;;   (global-set-key (kbd "M-m t p") 'multi-term-prev)
+;;   )
 
 (provide 'init-common-packages)
 ;;; init-common-packages ends here
