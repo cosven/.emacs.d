@@ -8,12 +8,21 @@
 (global-set-key (kbd "M-m p") 'projectile-command-map)
 (global-set-key (kbd "M-m g") 'magit-dispatch-popup)
 
+;; multi-term 配置
+(global-set-key (kbd "M-m t t") 'multi-term-dedicated-toggle)
+(global-set-key (kbd "M-m t n") 'multi-term-next)
+(global-set-key (kbd "M-m t p") 'multi-term-prev)
+
 ;; Emacs 工作流：frame vs window
 ;; http://ergoemacs.org/emacs/emacs_effective_windows_management.html
 (global-set-key (kbd "C-M-o") 'other-frame)
-(global-set-key [f3] 'other-frame)
 
 (global-set-key (kbd "M-o") 'other-window)
+
+
+;; awesome-tab 配置
+(global-set-key [f3] 'awesome-tab-backward)
+(global-set-key [f4] 'awesome-tab-forward)
 
 ;; personal use case
 (global-set-key (kbd "C-c e")

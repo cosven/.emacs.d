@@ -170,5 +170,14 @@
 ;;   (cnfonts-enable))
 ;;
 
+(use-package multi-term
+  :ensure t
+  :config
+  ;; /bin/bash --login 命令可以启动 login shell
+  ;; login shell vs non-login shell: https://unix.stackexchange.com/a/46856
+  (setq multi-term-program "/bin/bash")
+  (setq multi-term-program-switches nil)
+  )
+
 (provide 'init-common-packages)
 ;;; init-common-packages ends here
