@@ -72,14 +72,14 @@
 (use-package goto-chg
   :ensure t)
 
-(use-package eyebrowse
-  :ensure t
-  :init
-  (setq eyebrowse-mode-line-style nil)
-  :config
-  (eyebrowse-mode nil)
-  (eyebrowse-setup-opinionated-keys))
-
+;; (use-package eyebrowse
+;;   :ensure t
+;;   :init
+;;   (setq eyebrowse-mode-line-style nil)
+;;   :config
+;;   (eyebrowse-mode nil)
+;;   (eyebrowse-setup-opinionated-keys))
+;;
 (use-package writeroom-mode
   :ensure t)
 
@@ -183,7 +183,8 @@
   ;; 这会影响 vim 使用。
   (custom-set-variables
    '(term-unbind-key-list
-     '("C-z" "C-x" "C-c" "C-h" "M-x" "M-m")))
+     '("C-z" "C-x" "C-c" "C-h" "M-x" "M-m" "M-C-o"
+       "M-o")))
 
   ;; 设置一些常见的 shell 快捷键，在默认的 term 模式中，
   ;; M-d, M-DEL 等组合键都不生效。
@@ -200,6 +201,8 @@
        ("M-b" . term-send-backward-word)
        ("M-DEL" . term-send-backward-kill-word)
        ("M-d" . term-send-forward-kill-word)
+       ("M-p" . term-send-up)
+       ("M-n" . term-send-down)
        )))
   )
 
