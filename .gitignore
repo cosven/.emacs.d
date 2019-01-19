@@ -35,3 +35,5 @@ pyim
 
 # vim tmp file
 *.sw[p,o]
+
+.cache

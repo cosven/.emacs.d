@@ -35,7 +35,7 @@
   (interactive)
   (find-file "~/Dropbox/public/index.org"))
 (global-set-key (kbd "C-c t") 'mwiki)
-
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (provide 'init-keybindings)
 ;;; init-keybindings ends here

@@ -41,12 +41,18 @@
 (use-package fzf
   :ensure t)
 
-(use-package neotree
+(use-package treemacs
   :ensure t
-  :init
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
   :config
-  (global-set-key [f2] 'neotree-toggle))
+  (global-set-key [f2] 'treemacs)
+  (global-set-key (kbd "M-0") 'treemacs-select-window)
+  (setq treemacs-width 30)
+  (setq treemacs-recenter-after-file-follow t)
+  (setq treemacs-recenter-after-tag-follow t)
+  )
+
+(use-package treemacs-projectile
+  :ensure t)
 
 (use-package magit
   :ensure t
@@ -204,6 +210,16 @@
        ("M-p" . term-send-up)
        ("M-n" . term-send-down)
        )))
+  )
+
+(use-package ibuffer-vc
+  :ensure t
+  :config
+  (add-hook 'ibuffer-mode-hook
+            (lambda ()
+              (ibuffer-vc-set-filter-groups-by-vc-root)
+              (unless (eq ibuffer-sorting-mode 'alphabetic)
+                (ibuffer-do-sort-by-alphabetic))))
   )
 
 (provide 'init-common-packages)
