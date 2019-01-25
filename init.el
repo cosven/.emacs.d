@@ -37,6 +37,7 @@
 (require 'init-awesome-tab)
 (require 'init-diminish)
 (require 'init-keybindings)
+(require 'init-mode-line)
 
 (server-start)
 (setq custom-file "~/.emacs-custom.el")
@@ -47,7 +48,6 @@
  '(plantuml-jar-path "~/Documents/plantuml.jar")
  '(org-plantuml-jar-path "~/Documents/plantuml.jar")
  )
-
 (provide '.emacs)
 
 ;; Local Variables:
@@ -55,4 +55,3 @@
 ;; End:
 
 ;;; init.el ends here
-(put '2C-associate-buffer 'disabled t)

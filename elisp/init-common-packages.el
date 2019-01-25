@@ -78,14 +78,26 @@
 (use-package goto-chg
   :ensure t)
 
-;; (use-package eyebrowse
-;;   :ensure t
-;;   :init
-;;   (setq eyebrowse-mode-line-style nil)
-;;   :config
-;;   (eyebrowse-mode nil)
-;;   (eyebrowse-setup-opinionated-keys))
-;;
+(use-package eyebrowse
+  :ensure t
+  :init
+  (setq eyebrowse-mode-line-style t)
+  :config
+  (eyebrowse-mode t)
+  (eyebrowse-setup-opinionated-keys)
+  (custom-set-faces
+   '(eyebrowse-mode-line-active
+     ((t
+       (:inherit mode-line-emphasis
+                 :foreground "systemBlueColor"
+                 )
+       ))))
+  (custom-set-variables
+   '(eyebrowse-mode-line-left-delimiter "[")
+   '(eyebrowse-mode-line-right-delimiter "]")
+   )
+  )
+
 (use-package writeroom-mode
   :ensure t)
 
@@ -96,9 +108,6 @@
   )
 
 ;; ui related
-
-(use-package smart-mode-line
-  :ensure t)
 
 (use-package page-break-lines
   :ensure t)
