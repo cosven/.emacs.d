@@ -231,5 +231,11 @@
                 (ibuffer-do-sort-by-alphabetic))))
   )
 
+(use-package org-download
+  :ensure t
+  :config
+  (setq-default org-download-image-dir "~/Pictures/org-download")
+  )
+
 (provide 'init-common-packages)
 ;;; init-common-packages ends here
