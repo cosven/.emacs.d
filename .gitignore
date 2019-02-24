@@ -37,3 +37,6 @@ pyim
 *.sw[p,o]
 
 .cache
+
+# unknown session file
+session.*
