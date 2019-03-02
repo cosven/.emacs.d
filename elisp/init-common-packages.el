@@ -171,7 +171,10 @@
    ("C-;" . pyim-delete-word-from-personal-buffer)))
 
 (use-package go-mode
-  :ensure t)
+  :ensure t
+  :config
+  (setq tab-width 4)
+  )
 
 ;;(use-package highlight-indent-guides
 ;;  :ensure t
@@ -236,6 +239,9 @@
   :config
   (setq-default org-download-image-dir "~/Pictures/org-download")
   )
+
+(use-package graphviz-dot-mode
+  :ensure t)
 
 (provide 'init-common-packages)
 ;;; init-common-packages ends here
