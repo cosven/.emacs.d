@@ -40,3 +40,6 @@ pyim
 
 # unknown session file
 session.*
+
+# unknown tmp file
+transient/

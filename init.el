@@ -37,7 +37,7 @@
 (require 'init-awesome-tab)
 (require 'init-diminish)
 (require 'init-keybindings)
-(require 'init-mode-line)
+;; (require 'init-mode-line)
 
 (server-start)
 (setq custom-file "~/.emacs-custom.el")

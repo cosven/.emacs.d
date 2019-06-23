@@ -81,7 +81,7 @@
 (use-package eyebrowse
   :ensure t
   :init
-  (setq eyebrowse-mode-line-style t)
+  (setq eyebrowse-mode-line-style nil)
   :config
   (eyebrowse-mode t)
   (eyebrowse-setup-opinionated-keys)
@@ -241,6 +241,9 @@
   )
 
 (use-package graphviz-dot-mode
+  :ensure t)
+
+(use-package nasm-mode
   :ensure t)
 
 (provide 'init-common-packages)
