@@ -1,0 +1,10 @@
+[submodule "third_party/multi-term"]
+	path = third_party/multi-term
+	url = https://github.com/manateelazycat/multi-term.git
+[submodule "third_party/awesome-tab"]
+	path = third_party/awesome-tab
+	url = https://github.com/manateelazycat/awesome-tab.git
+[submodule "awesome-tab"]
+	shallow = true
+[submodule "multi-term"]
+	shallow = true
