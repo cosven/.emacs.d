@@ -43,3 +43,9 @@ session.*
 
 # unknown tmp file
 transient/
+
+# lsp
+.lsp-session*
+
+# emojify
+emojis/

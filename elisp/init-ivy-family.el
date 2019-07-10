@@ -40,6 +40,12 @@
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
   )
 
+(use-package ivy-xref
+  :ensure t
+  :init (if (< emacs-major-version 27)
+            (setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
+          (setq xref-show-definitions-function #'ivy-xref-show-defs)))
+
 
 (provide 'init-ivy-family)
 ;;; init-ivy-family ends here

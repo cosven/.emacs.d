@@ -49,6 +49,13 @@
   (setq treemacs-width 30)
   (setq treemacs-recenter-after-file-follow t)
   (setq treemacs-recenter-after-tag-follow t)
+  (defun treemacs-ignore-customize (filename abs-path)
+    (or (string-equal filename "foo")
+        (string-suffix-p ".o" abs-path)
+        (string-match-p "_flymake." abs-path)
+        )
+    )
+  (add-to-list 'treemacs-ignored-file-predicates #'treemacs-ignore-customize)
   )
 
 (use-package treemacs-projectile
@@ -61,18 +68,27 @@
 (use-package flycheck
   :ensure t
   :config
-  (add-hook 'after-init-hook #'global-flycheck-mode))
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+  (setq flycheck-clang-language-standard "c++11")
+  )
 
 (use-package company
   :ensure t
   :config
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  (use-package company-lsp
+    :ensure t
+    :config
+    (push 'company-lsp company-backends))
+  )
 
 
 (use-package ace-window
   :ensure t
   :init
   (setq aw-scope 'frame)
+  :config
+  (global-set-key (kbd "M-o") 'ace-window)
   )
 
 (use-package goto-chg
@@ -81,7 +97,7 @@
 (use-package eyebrowse
   :ensure t
   :init
-  (setq eyebrowse-mode-line-style nil)
+  (setq eyebrowse-mode-line-style t)
   :config
   (eyebrowse-mode t)
   (eyebrowse-setup-opinionated-keys)
@@ -136,6 +152,9 @@
     :config (pyim-basedict-enable))
 
   (setq default-input-method "pyim")
+  (setq pyim-dicts
+        '((:name "pyim-bigdict" :file "~/Dropbox/public/emacs/pyim-bigdict.pyim")
+          (:name "cosven-dict" :file "~/Dropbox/public/emacs/cosven.pyim")))
 
   ;; 我使用全拼
   (setq pyim-default-scheme 'quanpin)
@@ -161,7 +180,7 @@
   ;; 使用 pupup-el 来绘制选词框, 如果用 emacs26, 建议设置
   ;; 为 'posframe, 速度很快并且菜单不会变形，不过需要用户
   ;; 手动安装 posframe 包。
-  (setq pyim-page-tooltip 'popup)
+  (setq pyim-page-tooltip 'posframe)
 
   ;; 选词框显示5个候选词
   (setq pyim-page-length 5)
@@ -170,12 +189,6 @@
   (("M-j" . pyim-convert-code-at-point) ;与 pyim-probe-dynamic-english 配合
    ("C-;" . pyim-delete-word-from-personal-buffer)))
 
-(use-package go-mode
-  :ensure t
-  :config
-  (setq tab-width 4)
-  )
-
 ;;(use-package highlight-indent-guides
 ;;  :ensure t
 ;;  :config
@@ -183,10 +196,10 @@
 ;;  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 ;;  )
 
-;; (use-package cnfonts
-;;   :ensure t
-;;   :config
-;;   (cnfonts-enable))
+;;(use-package cnfonts
+;;  :ensure t
+;;  :config
+;;  (cnfonts-enable))
 ;;
 
 (use-package multi-term
@@ -240,11 +253,11 @@
   (setq-default org-download-image-dir "~/Pictures/org-download")
   )
 
-(use-package graphviz-dot-mode
-  :ensure t)
-
-(use-package nasm-mode
-  :ensure t)
+(use-package emojify
+  :ensure t
+  :config
+  ;; (add-hook 'after-init-hook #'global-emojify-mode)
+  )
 
 (provide 'init-common-packages)
 ;;; init-common-packages ends here

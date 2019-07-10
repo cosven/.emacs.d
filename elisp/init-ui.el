@@ -17,7 +17,7 @@
                (menu-bar-mode -1)
                (set-fontset-font t nil (font-spec :family "Apple Color Emoji") nil 'append)
                ;; (set-face-attribute 'default nil :font "Fira Code 14"))
-               (set-face-attribute 'default nil :font "Monaco 14"))
+               (set-face-attribute 'default nil :font "Monaco 13"))
                ;; (set-frame-font "Monaco 14" nil t)
               ;; ((eq system-type 'gnu/linux)
               ;;  (set-face-attribute 'default nil :font "Ubuntu Mono 13"))

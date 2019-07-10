@@ -37,6 +37,7 @@
 (require 'init-awesome-tab)
 (require 'init-diminish)
 (require 'init-keybindings)
+(require 'init-lsp)
 ;; (require 'init-mode-line)
 
 (server-start)
