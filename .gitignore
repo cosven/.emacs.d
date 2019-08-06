@@ -49,3 +49,6 @@ transient/
 
 # emojify
 emojis/
+
+# dap
+.dap-breakpoints

@@ -3,7 +3,7 @@
 
 ;;; Set default value for variables
 
-;; (setq-default inhibit-startup-screen t)
+(setq-default inhibit-startup-screen t)
 (setq-default cursor-type 'box)
 (setq-default truncate-lines t)
 (setq-default eww-search-prefix "https://www.google.com/search?q=")
@@ -39,8 +39,9 @@
 
 (when (eq system-type 'darwin) ;; mac specific settings
   (progn
-    (setq mac-option-modifier 'meta)
-    (setq mac-command-modifier 'meta))
+    (setq ns-left-option-modifier 'super)
+    (setq ns-left-command-modifier 'meta)
+    )
   (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
   )
 

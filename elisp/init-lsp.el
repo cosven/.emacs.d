@@ -25,6 +25,15 @@
          (lambda () (require 'ccls) (lsp)))
   )
 
+(use-package dap-mode
+  :ensure t
+  :config
+  ;; (dap-mode 1)
+  ;; (dap-ui-mode 1)
+  ;; (require 'dap-lldb)
+  (setq dap-lldb-debug-program `("lldb-vscode"))
+  )
+
 (provide 'init-lsp)
 
 ;;; init-lsp ends here

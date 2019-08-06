@@ -25,6 +25,7 @@
 (require 'init-defaults)
 (require 'init-ui)
 (require 'init-common-packages)
+(require 'init-treemacs)
 (require 'init-themes)
 (require 'init-lang)
 (require 'init-ivy-family)

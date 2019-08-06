@@ -41,26 +41,6 @@
 (use-package fzf
   :ensure t)
 
-(use-package treemacs
-  :ensure t
-  :config
-  (global-set-key [f2] 'treemacs)
-  (global-set-key (kbd "M-0") 'treemacs-select-window)
-  (setq treemacs-width 30)
-  (setq treemacs-recenter-after-file-follow t)
-  (setq treemacs-recenter-after-tag-follow t)
-  (defun treemacs-ignore-customize (filename abs-path)
-    (or (string-equal filename "foo")
-        (string-suffix-p ".o" abs-path)
-        (string-match-p "_flymake." abs-path)
-        )
-    )
-  (add-to-list 'treemacs-ignored-file-predicates #'treemacs-ignore-customize)
-  )
-
-(use-package treemacs-projectile
-  :ensure t)
-
 (use-package magit
   :ensure t
   )
@@ -98,21 +78,24 @@
   :ensure t
   :init
   (setq eyebrowse-mode-line-style t)
+  (defun rename-eyebrowse-default-window ()
+    (interactive)
+    (eyebrowse-rename-window-config eyebrowse-default-workspace-slot "adhoc")
+    )
+  (add-hook 'eyebrowse-mode-hook 'rename-eyebrowse-default-window)
   :config
   (eyebrowse-mode t)
   (eyebrowse-setup-opinionated-keys)
-  (custom-set-faces
-   '(eyebrowse-mode-line-active
-     ((t
-       (:inherit mode-line-emphasis
-                 :foreground "systemBlueColor"
-                 )
-       ))))
-  (custom-set-variables
-   '(eyebrowse-mode-line-left-delimiter "[")
-   '(eyebrowse-mode-line-right-delimiter "]")
-   )
-  )
+  :custom-face
+  (eyebrowse-mode-line-active
+   ((t
+     (:inherit mode-line-emphasis
+               :foreground "systemBlueColor"
+               )
+     )))
+  :custom
+  (eyebrowse-mode-line-left-delimiter "[")
+  (eyebrowse-mode-line-right-delimiter "]"))
 
 (use-package writeroom-mode
   :ensure t)
@@ -186,7 +169,7 @@
   (setq pyim-page-length 5)
 
   :bind
-  (("M-j" . pyim-convert-code-at-point) ;与 pyim-probe-dynamic-english 配合
+  (("M-j" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
    ("C-;" . pyim-delete-word-from-personal-buffer)))
 
 ;;(use-package highlight-indent-guides
@@ -203,7 +186,7 @@
 ;;
 
 (use-package multi-term
-  :ensure t
+  :load-path "third_party/multi-term/"
   :config
   ;; /bin/bash --login 命令可以启动 login shell
   ;; login shell vs non-login shell: https://unix.stackexchange.com/a/46856
@@ -258,6 +241,14 @@
   :config
   ;; (add-hook 'after-init-hook #'global-emojify-mode)
   )
+
+(when (eq system-type 'darwin)
+  (use-package dash-at-point
+    :ensure t)
+  )
+
+(use-package dockerfile-mode
+  :ensure t)
 
 (provide 'init-common-packages)
 ;;; init-common-packages ends here

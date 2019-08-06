@@ -6,18 +6,20 @@
 (defun init-ui-look ()
   "Init Emacs look."
   (tool-bar-mode -1)
-  (scroll-bar-mode -1)
   ;; (global-linum-mode -1)
   (fringe-mode -1)
 
   (if (display-graphic-p)
       (progn
+  	(scroll-bar-mode -1)
         (menu-bar-mode -1)
         (cond ((eq system-type 'darwin)
                (menu-bar-mode -1)
                (set-fontset-font t nil (font-spec :family "Apple Color Emoji") nil 'append)
                ;; (set-face-attribute 'default nil :font "Fira Code 14"))
-               (set-face-attribute 'default nil :font "Monaco 13"))
+               ;; (set-face-attribute 'default nil :font "Source Code Pro for Powerline 13")
+               (set-face-attribute 'default nil :font "Monaco 13")
+               )
                ;; (set-frame-font "Monaco 14" nil t)
               ;; ((eq system-type 'gnu/linux)
               ;;  (set-face-attribute 'default nil :font "Ubuntu Mono 13"))

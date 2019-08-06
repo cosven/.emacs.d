@@ -38,10 +38,18 @@
     (interactive)  ;; interactive can turn a function to a command
     (find-file user-init-file)))
 
+;; 单（右）手浏览代码
+(when (eq system-type 'darwin) ;; mac specific settings
+  (progn
+    (setq ns-right-command-modifier 'control)))
+(global-set-key (kbd "C-,") 'next-line)
+(global-set-key (kbd "C-,") 'next-line)
+
+
 (defun mwiki ()
   "Find my wiki index org file."
   (interactive)
-  (find-file "~/Dropbox/public/index.org"))
+  (find-file "~/cosven.github.io/index.org"))
 (global-set-key (kbd "C-c t") 'mwiki)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
