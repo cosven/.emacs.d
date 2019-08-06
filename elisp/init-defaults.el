@@ -39,8 +39,8 @@
 
 (when (eq system-type 'darwin) ;; mac specific settings
   (progn
-    (setq ns-left-option-modifier 'super)
-    (setq ns-left-command-modifier 'meta)
+    (setq mac-option-modifier 'super)
+    (setq mac-command-modifier 'meta)
     )
   (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
   )

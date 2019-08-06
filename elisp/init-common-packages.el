@@ -220,6 +220,14 @@
        )))
   )
 
+(use-package snails
+  :load-path "third_party/snails/"
+  :bind
+  (:map global-map
+        ("M-p" . snails))
+  )
+
+
 (use-package ibuffer-vc
   :ensure t
   :config
