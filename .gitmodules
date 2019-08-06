@@ -8,3 +8,6 @@
 	shallow = true
 [submodule "multi-term"]
 	shallow = true
+[submodule "third_party/snails"]
+	path = third_party/snails
+	url = git@github.com:manateelazycat/snails.git
