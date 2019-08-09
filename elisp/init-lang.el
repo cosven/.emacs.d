@@ -47,6 +47,7 @@
   :ensure t)
 
 (use-package dockerfile-mode
+  :mode "\\Dockerfile\\'"
   :ensure t)
 
 (provide 'init-lang)

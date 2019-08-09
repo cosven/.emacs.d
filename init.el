@@ -3,6 +3,13 @@
 ;; Emacs config created by cosven
 ;;; Code:
 
+(setq gc-cons-threshold 128000000)  ;; 128Mb
+(add-hook 'after-init-hook #'(lambda ()
+                               ;; restore after startup
+                               (setq gc-cons-threshold 800000)))
+(setq inhibit-startup-screen t
+      package-enable-at-startup nil)
+
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
@@ -19,17 +26,19 @@
 ;; 加载已经安装的包，这样子，之后 requrie 一个包就可以让该包生效
 (package-initialize)
 (require-or-install-pkg 'use-package)
-(setq use-package-verbose t)
+(setq use-package-verbose t
+      use-package-minimum-reported-time 0.05)
 
-(require 'init-simple)
 (require 'init-defaults)
 (require 'init-ui)
 (require 'init-common-packages)
 (require 'init-treemacs)
-(require 'init-themes)
+;;(require 'init-themes)
 (require 'init-lang)
-(require 'init-ivy-family)
 (require 'init-projectile)
+(require 'init-ivy-family)
+;;(use-package smex :ensure t :bind (:map global-map ("M-x" . 'smex)))
+;;(require 'init-helm)
 (require 'init-python)
 (require 'init-web)
 (require 'init-evil)
@@ -42,10 +51,10 @@
 (require 'init-snails)
 ;; (require 'init-mode-line)
 
-(server-start)
+;; (server-start)
 (setq custom-file "~/.emacs-custom.el")
-(when (file-exists-p custom-file)
-  (load custom-file))
+;;(when (file-exists-p custom-file)
+;;  (load custom-file))
 
 (custom-set-variables
  '(plantuml-jar-path "~/Documents/plantuml.jar")
