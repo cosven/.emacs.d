@@ -4,13 +4,9 @@
 ;;; Code:
 
 ;; 虚拟环境管理
-(use-package pyvenv :ensure t)
-
-;; emacs ipython notebook
-(use-package ein :ensure t)
-
-;; pydoc
-(use-package pydoc :ensure t)
+(use-package pyvenv
+  :ensure t
+  :hook python-mode)
 
 ; (use-package flycheck-pycheckers :ensure t)
 
@@ -41,13 +37,16 @@
 (setq python-shell-interpreter-args "-m IPython --simple-prompt -i")
 
 ;; 自动补全
-(use-package anaconda-mode :ensure t)
-(use-package company-anaconda :ensure t)
+(use-package anaconda-mode
+  :hook python-mode anaconda-mode
+  :ensure t)
+(use-package company-anaconda
+  :hook python-mode
+  :ensure t)
 
 (eval-after-load "company"
   '(add-to-list 'company-backends 'company-anaconda))
 
-(add-hook 'python-mode-hook 'anaconda-mode)
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 ;; (add-hook 'python-mode-hook 'pyvenv-mode)
 (add-hook 'python-mode-hook

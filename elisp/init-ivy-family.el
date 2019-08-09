@@ -2,11 +2,6 @@
 
 ;;; Code:
 
-(defun grep-curword ()
-  "Grep word under cursor in whole project."
-  (interactive)
-  (counsel-rg (thing-at-point 'word)))
-
 (use-package ivy
   :ensure t
   :init
@@ -14,38 +9,32 @@
   (setq enable-recursive-minibuffers t)
   :config
   (ivy-mode 1)
-  (global-set-key (kbd "C-c C-r") 'ivy-resume)
-
-  (global-set-key (kbd "C-c v s") 'ivy-switch-view)
-  (global-set-key (kbd "C-c v c") 'ivy-push-view)
-  (global-set-key (kbd "C-c v d") 'ivy-pop-view)
+  :bind
+  (:map global-map
+        ("C-c C-r" . 'ivy-resume)
+        ("C-c v s" . 'ivy-switch-view)
+        ("C-c v c" . 'ivy-push-view)
+        ("C-c v d" . 'ivy-pop-view))
   )
 
 ;; isearch replacement
 (use-package swiper
   :ensure t
   :config
-  (global-set-key "\C-s" 'swiper))
+  :bind
+  (:map global-map
+        ("C-s" . 'swiper)))
 
 (use-package counsel
   :ensure t
+  :bind
+  (:map global-map
+        ("M-x" . 'counsel-M-x)
+        ("C-x l" . 'counsel-fzf)
+        ("M-i" . 'counsel-imenu))
   :config
-  (global-set-key (kbd "M-x") 'counsel-M-x)
-  (global-set-key (kbd "C-x C-m") 'counsel-M-x)
-  (global-set-key (kbd "C-c g") 'counsel-git-grep)
-  (global-set-key (kbd "C-c C-p") 'counsel-projectile)
-  (global-set-key (kbd "C-c f") 'grep-curword)
-  (global-set-key (kbd "C-x l") 'counsel-fzf)
-  (global-set-key (kbd "M-i") 'counsel-imenu)
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
   )
-
-(use-package ivy-xref
-  :ensure t
-  :init (if (< emacs-major-version 27)
-            (setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
-          (setq xref-show-definitions-function #'ivy-xref-show-defs)))
-
 
 (provide 'init-ivy-family)
 ;;; init-ivy-family ends here

@@ -3,7 +3,6 @@
 
 (use-package treemacs
   :ensure t
-  :defer t
   :init
   (setq treemacs-width 28)
   (setq treemacs-recenter-after-file-follow t)

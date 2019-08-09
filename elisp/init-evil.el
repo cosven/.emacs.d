@@ -1,4 +1,5 @@
 (use-package evil
+  :defer t
   :ensure t
   :init
   (add-hook 'evil-mode-hook

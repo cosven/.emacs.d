@@ -10,6 +10,16 @@
   (setq tab-width 2))
 
 (use-package web-mode
+  :mode ("\\.html?\\'"
+         "\\.js?\\'"
+         "\\.phtml\\'"
+         "\\.tpl\\.php\\'"
+         "\\.[agj]sp\\'"
+         "\\.as[cp]x\\'"
+         "\\.erb\\'"
+         "\\.mustache\\'"
+         "\\.djhtml\\'"
+         )
   :ensure t
   :init
   (setq-default web-mode-enable-auto-indentation t)
@@ -21,29 +31,10 @@
   (setq-default js2-strict-missing-semi-warning nil)
   (setq-default js2-missing-semi-one-line-override nil)
   (setq-default js2-strict-trailing-comma-warning nil)
-  (setq-default js-indent-level 2)
-
-  :config
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\*fuo\\*\\'" . fuo-mode))
-  )
-
-(use-package js2-mode
-  :ensure t
-  :init
-  ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-  ;; (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . js2-jsx-mode))
-  )
+  (setq-default js-indent-level 2))
 
 (use-package rjsx-mode
+  :mode ("\\.jsx\\'" "\\.js\\'")
   :ensure t
   :init
   (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))

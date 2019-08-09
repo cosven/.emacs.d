@@ -27,6 +27,11 @@
 
 (global-set-key (kbd "M-o") 'other-window)
 
+(defun grep-curword ()
+  "Grep word under cursor in whole project."
+  (interactive)
+  (counsel-rg (thing-at-point 'word)))
+(global-set-key (kbd "M-m f") 'grep-curword)
 
 ;; awesome-tab 配置
 (global-set-key [f3] 'awesome-tab-backward)

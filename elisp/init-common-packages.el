@@ -3,7 +3,8 @@
 
 ;;; Code:
 
-(use-package general :ensure t)
+(use-package general
+  :ensure t)
 
 (use-package which-key
   :ensure t
@@ -42,24 +43,22 @@
   :ensure t)
 
 (use-package magit
+  :defer t
   :ensure t
   )
 
 (use-package flycheck
   :ensure t
+  :init
+  (setq flycheck-clang-language-standard "c++11")
   :config
   (add-hook 'after-init-hook #'global-flycheck-mode)
-  (setq flycheck-clang-language-standard "c++11")
   )
 
 (use-package company
   :ensure t
   :config
   (add-hook 'after-init-hook 'global-company-mode)
-  (use-package company-lsp
-    :ensure t
-    :config
-    (push 'company-lsp company-backends))
   )
 
 
@@ -67,8 +66,9 @@
   :ensure t
   :init
   (setq aw-scope 'frame)
-  :config
-  (global-set-key (kbd "M-o") 'ace-window)
+  :bind
+  (:map global-map
+        ("M-o" . 'ace-window))
   )
 
 (use-package goto-chg
@@ -121,13 +121,14 @@
 ;;   (global-git-gutter-mode))
 ;;
 
-(use-package diff-hl :ensure t
+(use-package diff-hl
+  :ensure t
   :config
-  (global-diff-hl-mode 1))
+  (add-hook 'after-init-hook 'global-diff-hl-mode))
 
 (use-package pyim
   :ensure t
-  :demand t
+;;  :demand t
   :config
   ;; 激活 basedict 拼音词库，五笔用户请继续阅读 README
   (use-package pyim-basedict
@@ -186,6 +187,7 @@
 ;;
 
 (use-package multi-term
+  :defer t
   :load-path "third_party/multi-term/"
   :config
   ;; /bin/bash --login 命令可以启动 login shell
@@ -230,25 +232,18 @@
                 (ibuffer-do-sort-by-alphabetic))))
   )
 
-(use-package org-download
-  :ensure t
-  :config
-  (setq-default org-download-image-dir "~/Pictures/org-download")
-  )
-
-(use-package emojify
-  :ensure t
-  :config
-  ;; (add-hook 'after-init-hook #'global-emojify-mode)
-  )
-
 (when (eq system-type 'darwin)
   (use-package dash-at-point
     :ensure t)
   )
 
-(use-package dockerfile-mode
-  :ensure t)
+;; (use-package xah-fly-keys
+;;   :ensure t
+;;   :config
+;;   (xah-fly-keys-set-layout "qwerty")
+;;   (xah-fly-keys 1)
+;;   )
+
 
 (provide 'init-common-packages)
-;;; init-common-packages ends here
+;;; init-common-packages.el ends here

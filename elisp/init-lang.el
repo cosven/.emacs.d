@@ -3,19 +3,20 @@
 
 ;;; Code:
 
-(use-package plantuml-mode
-  :ensure t)
-
 (use-package restclient
+  :defer t
   :ensure t)
 
 (use-package yaml-mode
+  :mode ("\\.yml\\'" "\\.yaml\\'")
   :ensure t)
 
 (use-package markdown-mode
+  :mode ("\\.md\\'" "\\.markdown\\'")
   :ensure t)
 
 (use-package groovy-mode
+  :mode ("\\.groovy\\'")
   :ensure t
   :config
   (add-hook 'groovy-mode-hook
@@ -25,9 +26,11 @@
               (setq tab-width 2))))
 
 (use-package thrift
+  :mode ("\\.thrift\\'")
   :ensure t)
 
 (use-package go-mode
+  :mode ("\\.go\\'")
   :ensure t
   :config
   (add-hook 'go-mode-hook
@@ -37,9 +40,13 @@
               )))
 
 (use-package graphviz-dot-mode
+  :mode ("\\.dot\\'")
   :ensure t)
 
 (use-package nasm-mode
+  :ensure t)
+
+(use-package dockerfile-mode
   :ensure t)
 
 (provide 'init-lang)
