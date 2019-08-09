@@ -237,13 +237,14 @@
     :ensure t)
   )
 
-;; (use-package xah-fly-keys
-;;   :ensure t
-;;   :config
-;;   (xah-fly-keys-set-layout "qwerty")
-;;   (xah-fly-keys 1)
-;;   )
-
+(use-package projectile
+  :ensure t
+  :init
+  (setq projectile-enable-caching t)
+  (setq projectile-completion-system 'ivy)
+  :config
+  (add-hook 'after-init-hook 'projectile-mode)
+  )
 
 (provide 'init-common-packages)
 ;;; init-common-packages.el ends here

@@ -35,7 +35,6 @@
 (require 'init-treemacs)
 ;;(require 'init-themes)
 (require 'init-lang)
-(require 'init-projectile)
 (require 'init-ivy-family)
 ;;(use-package smex :ensure t :bind (:map global-map ("M-x" . 'smex)))
 ;;(require 'init-helm)
