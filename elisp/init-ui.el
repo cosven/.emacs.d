@@ -2,7 +2,7 @@
 
 ;;; Code:
 
-(defun mcenter-current-frame ()
+(defun mrecenter-current-frame ()
   "Frame 屏幕居中."
   (interactive)
   (let* ((workarea (frame-monitor-workarea (selected-frame)))
@@ -13,8 +13,7 @@
          (pos-x (/ (- max-x min-x (frame-outer-width)) 2))
          (pos-y (/ (- max-y min-y (frame-outer-height)) 2)))
     (message "%d %d" pos-x pos-y)
-    (set-frame-position (selected-frame) pos-x pos-y)
-    ))
+    (set-frame-position (selected-frame) pos-x pos-y)))
 
 (defun init-ui-look ()
   "Init Emacs look."
@@ -40,11 +39,7 @@
     (menu-bar-mode -1)))
 
 (init-ui-look)
-
-(defun cb-after-make-frame (frame)
-  "Callback of after a FRAME made."
-  (init-ui-look)
-  )
+(mrecenter-current-frame)
 
 ;; 这个配置可能会让 terminal 模式下的 emacs 渲染不正常！
 ;; (add-hook 'after-make-frame-functions 'cb-after-make-frame)

@@ -33,12 +33,12 @@
   (python-shell-send-string (string-trim (thing-at-point 'line)))
   )
 
-;; (setq python-shell-interpreter "python3")
+(setq python-shell-interpreter "python3")
 (setq python-shell-interpreter-args "-m IPython --simple-prompt -i")
 
 ;; 自动补全
 (use-package anaconda-mode
-  :hook python-mode anaconda-mode
+  :hook python-mode
   :ensure t)
 (use-package company-anaconda
   :hook python-mode
