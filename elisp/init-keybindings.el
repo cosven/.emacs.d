@@ -6,7 +6,7 @@
 (global-set-key (kbd "M-m") 'm-m-map)
 
 (global-set-key (kbd "M-m p") 'projectile-command-map)
-(global-set-key (kbd "M-m g") 'magit-dispatch-popup)
+(global-set-key (kbd "M-m g") 'magit-status)
 
 ;; M-m t 应该为 term 相关命令的前缀
 (global-set-key (kbd "M-m t t") 'multi-term-dedicated-toggle)
@@ -30,12 +30,17 @@
 (defun grep-curword ()
   "Grep word under cursor in whole project."
   (interactive)
-  (counsel-rg (thing-at-point 'word)))
+  ;; http://ergoemacs.org/emacs/elisp_thing-at-point_problems.html
+  (counsel-rg (thing-at-point 'symbol)))
 (global-set-key (kbd "M-m f") 'grep-curword)
 
 ;; awesome-tab 配置
 (global-set-key [f3] 'awesome-tab-backward)
 (global-set-key [f4] 'awesome-tab-forward)
+
+;; 配合 awesome-tab 使用
+;; awesome-tab 上经常会显示很多 buffer，这时可以使用 f6 逐个 kill
+(global-set-key [f6] 'kill-current-buffer)
 
 ;; personal use case
 (global-set-key (kbd "C-c e")

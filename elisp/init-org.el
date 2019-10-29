@@ -3,7 +3,7 @@
 ;;; Code:
 
 (use-package org
-  :mode "\\.org\\'"
+  :mode ("\\.org\\'" . org-mode)
   :ensure t
   :bind
   (:map global-map
@@ -19,9 +19,7 @@
     (if (version< emacs-version "26.0")
         (map-put babel-languages 'sh t)
       (map-put babel-languages 'shell t))
-    (org-babel-do-load-languages 'org-babel-load-languages babel-languages))
-
-  )
+    (org-babel-do-load-languages 'org-babel-load-languages babel-languages)))
 
 
 (provide 'init-org)

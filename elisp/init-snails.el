@@ -38,12 +38,7 @@
    :candiate-do switch-project)
   :bind
   (:map global-map
-        ("M-p" . (lambda ()
-                   (interactive)
-                   (snails '(snails-backend-projects
-                             snails-backend-projectile
-                             snails-backend-buffer
-                             snails-backend-recentf))))))
+        ("M-p" . 'snails)))
 
 (provide 'init-snails)
 

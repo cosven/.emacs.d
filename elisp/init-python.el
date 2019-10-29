@@ -4,9 +4,7 @@
 ;;; Code:
 
 ;; 虚拟环境管理
-(use-package pyvenv
-  :ensure t
-  :hook python-mode)
+(use-package pyvenv :ensure t)
 
 ; (use-package flycheck-pycheckers :ensure t)
 
@@ -41,13 +39,13 @@
   :hook python-mode
   :ensure t)
 (use-package company-anaconda
-  :hook python-mode
   :ensure t)
 
 (eval-after-load "company"
   '(add-to-list 'company-backends 'company-anaconda))
 
 (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+;; (add-hook 'python-mode-hook 'anaconda-mode)
 ;; (add-hook 'python-mode-hook 'pyvenv-mode)
 (add-hook 'python-mode-hook
           (lambda ()

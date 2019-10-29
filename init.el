@@ -33,7 +33,7 @@
 (require 'init-ui)
 (require 'init-common-packages)
 (require 'init-treemacs)
-;;(require 'init-themes)
+(require 'init-themes)
 (require 'init-lang)
 (require 'init-ivy-family)
 ;;(use-package smex :ensure t :bind (:map global-map ("M-x" . 'smex)))
@@ -47,7 +47,7 @@
 (require 'init-diminish)
 (require 'init-keybindings)
 (require 'init-lsp)
-(require 'init-snails)
+;; (require 'init-snails)
 ;; (require 'init-mode-line)
 
 ;; (server-start)

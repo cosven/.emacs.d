@@ -18,8 +18,8 @@
   (with-eval-after-load 'eyebrowse
     (global-set-key (kbd "M-0") #'treemacs-select-window))
   :config
-  (treemacs-follow-mode nil)
-  (treemacs-tag-follow-mode nil)
+  (setq treemacs-follow-mode nil)
+  (setq treemacs-tag-follow-mode nil)
   :bind
   (:map global-map
         ("M-0" . treemacs-select-window)
