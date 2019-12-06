@@ -29,6 +29,10 @@
   :mode ("\\.thrift\\'")
   :ensure t)
 
+(use-package protobuf-mode
+  :mode ("\\.proto\\'")
+  :ensure t)
+
 (use-package go-mode
   :mode ("\\.go\\'")
   :ensure t
@@ -49,6 +53,13 @@
 (use-package dockerfile-mode
   :mode "\\Dockerfile\\'"
   :ensure t)
+
+(use-package rust-mode
+  :ensure t
+  :init
+  (setq rust-format-on-save t)
+  )
+
 
 (provide 'init-lang)
 ;;; init-lang ends here

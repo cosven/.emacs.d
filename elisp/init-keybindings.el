@@ -40,7 +40,7 @@
 
 ;; 配合 awesome-tab 使用
 ;; awesome-tab 上经常会显示很多 buffer，这时可以使用 f6 逐个 kill
-(global-set-key [f6] 'kill-current-buffer)
+(global-set-key [f5] 'kill-current-buffer)
 
 ;; personal use case
 (global-set-key (kbd "C-c e")
@@ -48,13 +48,17 @@
     (interactive)  ;; interactive can turn a function to a command
     (find-file user-init-file)))
 
-;; 单（右）手浏览代码
-(when (eq system-type 'darwin) ;; mac specific settings
-  (progn
-    (setq ns-right-command-modifier 'control)))
-(global-set-key (kbd "C-,") 'next-line)
-(global-set-key (kbd "C-,") 'next-line)
-
+;; 单（右）手浏览代码 - 尝试失败
+;;
+;; 1. the left command key of Filco minila air is recognized
+;;    as right command on macOS
+;; 2. 经过最近实践，自己兵部并不会这样使用
+;;
+;;(when (eq system-type 'darwin) ;; mac specific settings
+;;  (progn
+;;    (setq ns-right-command-modifier 'control)))
+;; (global-set-key (kbd "C-,") 'next-line)
+;; (global-set-key (kbd "C-,") 'next-line)
 
 (defun mwiki ()
   "Find my wiki index org file."

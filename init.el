@@ -47,7 +47,7 @@
 (require 'init-diminish)
 (require 'init-keybindings)
 (require 'init-lsp)
-;; (require 'init-snails)
+(require 'init-snails)
 ;; (require 'init-mode-line)
 
 ;; (server-start)

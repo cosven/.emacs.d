@@ -7,7 +7,8 @@
   (setq lsp-enable-snippet nil)
   (setq lsp-prefer-flymake nil)
   :hook  ((c++-mode . lsp-deferred)
-          (go-mode . lsp-deferred))
+          (go-mode . lsp-deferred)
+          (rust-mode . lsp-deferred))
   :commands (lsp lsp-deferred)
   )
 

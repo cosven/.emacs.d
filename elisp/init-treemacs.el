@@ -17,6 +17,8 @@
     (add-to-list 'treemacs-ignored-file-predicates #'treemacs-ignore-customize))
   (with-eval-after-load 'eyebrowse
     (global-set-key (kbd "M-0") #'treemacs-select-window))
+  :hook ((treemacs-mode) .
+         (lambda() (display-line-numbers-mode -1)))
   :config
   (setq treemacs-follow-mode nil)
   (setq treemacs-tag-follow-mode nil)

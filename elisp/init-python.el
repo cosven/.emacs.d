@@ -49,7 +49,7 @@
 ;; (add-hook 'python-mode-hook 'pyvenv-mode)
 (add-hook 'python-mode-hook
           (lambda ()
-            (local-set-key [f5] 'run-py)
+            (local-set-key [f6] 'run-py)
             (local-set-key (kbd "C-x C-e") 'py-send-line)
             ;; this may override eldoc shortcut
             (local-set-key (kbd "C-c C-f") 'pydoc)

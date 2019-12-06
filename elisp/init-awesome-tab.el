@@ -26,7 +26,11 @@
   (global-set-key (kbd "s-8") 'awesome-tab-select-visible-tab)
   (global-set-key (kbd "s-9") 'awesome-tab-select-visible-tab)
   (global-set-key (kbd "s-0") 'awesome-tab-select-visible-tab)
-  )
+
+  (global-set-key (kbd "s-h") 'awesome-tab-backward-group)
+  (global-set-key (kbd "s-l") 'awesome-tab-forward-group))
+
+
 
 (custom-set-faces
  '(awesome-tab-selected
