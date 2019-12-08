@@ -36,6 +36,8 @@
 
    ;; FIXME: 不知道为什么，这里不能用 lambda
    :candiate-do switch-project)
+  :hook ((snails-mode) .
+         (lambda() (display-line-numbers-mode -1)))
   :bind
   (:map global-map
         ("M-p" . 'snails)))
