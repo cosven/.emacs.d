@@ -3,6 +3,14 @@
 
 ;;; Code:
 
+(use-package tramp
+  :ensure t
+  :config
+  ;; https://www.gnu.org/software/emacs/manual/html_node/tramp/Remote-programs.html
+  ;; golang lsp-mode goto-definition 会调用 go 命令，而默认的 tramp-remote-path
+  ;; 不会读取 .profile 里面的配置，而 tramp-own-remote-path 是会的
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
+
 (use-package general
   :ensure t)
 

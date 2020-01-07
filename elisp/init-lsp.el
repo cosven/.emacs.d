@@ -16,6 +16,12 @@
                     :major-modes '(rust-mode)
                     :remote? t
                     :server-id 'rls-remote))
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-tramp-connection
+                                     (lambda () (cons "~/go/bin/gopls" lsp-gopls-server-args)))
+                    :major-modes '(go-mode)
+                    :remote? t
+                    :server-id 'gopls-remote))
   )
 
 (use-package lsp-ui
