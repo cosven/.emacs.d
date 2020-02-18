@@ -8,7 +8,10 @@
   (setq lsp-prefer-flymake nil)
   :hook  ((c++-mode . lsp-deferred)
           (go-mode . lsp-deferred)
-          (rust-mode . lsp-deferred))
+          (rust-mode . lsp-deferred)
+          (clojure-mode . lsp-deferred)
+          (clojurec-mode . lsp-deferred)
+          (clojurescript-mode . lsp-deferred))
   :commands (lsp lsp-deferred)
   :config
   (lsp-register-client
@@ -22,6 +25,11 @@
                     :major-modes '(go-mode)
                     :remote? t
                     :server-id 'gopls-remote))
+  (dolist (m '(clojure-mode
+               clojurec-mode
+               clojurescript-mode
+               clojurex-mode))
+    (add-to-list 'lsp-language-id-configuration `(,m . "clojure")))
   )
 
 (use-package lsp-ui

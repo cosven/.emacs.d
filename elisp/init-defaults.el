@@ -39,6 +39,7 @@
 (show-paren-mode 1)
 (which-function-mode -1)
 (global-display-line-numbers-mode)
+(recentf-mode)
 
 (when (eq system-type 'darwin) ;; mac specific settings
   (progn
