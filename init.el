@@ -43,7 +43,7 @@
 (require 'init-evil)
 (require 'init-fuo)
 (require 'init-org)
-(require 'init-awesome-tab)
+;; (require 'init-awesome-tab)
 (require 'init-diminish)
 (require 'init-keybindings)
 (require 'init-lsp)

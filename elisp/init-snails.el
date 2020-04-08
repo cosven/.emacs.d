@@ -30,12 +30,12 @@
            (when (or
                   (string-equal input "")
                   (snails-match-input-p input project))
-             (snails-add-candiate 'candidates (snails-wrap-file-icon project) project))))
+             (snails-add-candidate 'candidates (snails-wrap-file-icon project) project))))
        (snails-sort-candidates input candidates 1 1)
        candidates))
 
    ;; FIXME: 不知道为什么，这里不能用 lambda
-   :candiate-do switch-project)
+   :candidate-do switch-project)
   :hook ((snails-mode) .
          (lambda() (display-line-numbers-mode -1)))
   :bind
