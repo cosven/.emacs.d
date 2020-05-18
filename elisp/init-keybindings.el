@@ -38,6 +38,10 @@
 (global-set-key [f3] 'awesome-tab-backward)
 (global-set-key [f4] 'awesome-tab-forward)
 
+;; xref 配置
+(global-set-key (kbd "M-.") 'xref-find-definitions)
+(global-set-key (kbd "M-?") 'xref-find-references)
+
 ;; 配合 awesome-tab 使用
 ;; awesome-tab 上经常会显示很多 buffer，这时可以使用 f6 逐个 kill
 (global-set-key [f5] 'kill-current-buffer)

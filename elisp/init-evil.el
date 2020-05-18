@@ -21,10 +21,15 @@
                "<SPC> g" '(:keymap magit-mode-map :package magit))
               (general-define-key
                "<SPC> f" '(:keymap fuo-mode-map :package fuo))
+
+              ;; neotree
               (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
               (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
               (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+              (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+              (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
 
+              ;;; evil normal state map
               (define-key evil-normal-state-map "tt" 'neotree-toggle)
               (define-key evil-normal-state-map "tb" 'imenu-list-smart-toggle)
               (define-key evil-normal-state-map "f" 'counsel-git-grep)
