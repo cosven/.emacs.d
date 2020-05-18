@@ -18,9 +18,11 @@
 (defun init-ui-look ()
   "Init Emacs look."
   (tool-bar-mode -1)
-  (set-fringe-mode '(nil . 0))
+  (when (featurep 'fringe)
+    (set-fringe-mode '(nil . 0)))
   ;; (fringe-mode -1)
-  (scroll-bar-mode -1)
+  (when (featurep 'scroll-bar)
+    (scroll-bar-mode -1))
   (menu-bar-mode -1)
   ;; (global-linum-mode -1)
 
