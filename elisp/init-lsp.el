@@ -15,7 +15,7 @@
   :commands (lsp lsp-deferred)
   :config
   (lsp-register-client
-   (make-lsp-client :new-connection (lsp-tramp-connection "~/.cargo/bin/ra_lsp_server")
+   (make-lsp-client :new-connection (lsp-tramp-connection "~/.cargo/bin/rls")
                     :major-modes '(rust-mode)
                     :remote? t
                     :server-id 'rls-remote))
