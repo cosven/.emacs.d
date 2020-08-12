@@ -9,7 +9,9 @@
 (diminish 'git-gutter-mode)
 (diminish 'company-mode)
 (diminish 'anaconda-mode)
-(diminish 'pyim-isearch-mode)
+(add-hook 'pyim-isearch-mode-hook
+          (lambda ()
+            (diminish 'pyim-isearch-mode)))
 (diminish 'eldoc-mode)
 (add-hook 'company-mode-hook
           (lambda ()
