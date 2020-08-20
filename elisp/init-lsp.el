@@ -29,8 +29,7 @@
                clojurec-mode
                clojurescript-mode
                clojurex-mode))
-    (add-to-list 'lsp-language-id-configuration `(,m . "clojure")))
-  )
+    (add-to-list 'lsp-language-id-configuration `(,m . "clojure"))))
 
 (use-package lsp-ui
   :ensure t
