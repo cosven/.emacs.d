@@ -256,5 +256,19 @@
   (add-hook 'after-init-hook 'projectile-mode)
   )
 
+;; 当我们想启用这个 mode 的时候，人肉运行 cnfonts-enable
+(use-package cnfonts)
+
+(use-package highlight-indent-guides
+  :ensure t
+  :hook ((prog-mode . highlight-indent-guides-mode))
+  :config
+  (setq highlight-indent-guides-method 'character)
+  )
+
+(use-package markdown-toc
+  :ensure t)
+
+
 (provide 'init-common-packages)
 ;;; init-common-packages.el ends here
