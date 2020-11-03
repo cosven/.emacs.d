@@ -4,8 +4,17 @@
 (use-package lsp-mode
   :ensure t
   :init
-  (setq lsp-enable-snippet nil)
-  (setq lsp-prefer-flymake nil)
+  (setq lsp-eldoc-hook nil)
+  :custom
+  ;; try to disable automatic-doc-help in echo erea
+  ;; when it is enabled, lsp will send requests to lsp-server
+  ;; when cursor is moved, which may block the editor
+  ;; https://github.com/emacs-lsp/lsp-mode/issues/1223
+  (lsp-signature-auto-activate nil)
+  (lsp-signature-render-documentation nil)
+
+  (lsp-enable-snippet nil)
+  (lsp-prefer-flymake nil)
   :hook  ((c++-mode . lsp-deferred)
           (go-mode . lsp-deferred)
           (rust-mode . lsp-deferred)
