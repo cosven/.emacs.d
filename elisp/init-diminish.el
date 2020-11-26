@@ -13,6 +13,7 @@
           (lambda ()
             (diminish 'pyim-isearch-mode)))
 (diminish 'eldoc-mode)
+(diminish 'highlight-indent-guides-mode)
 (add-hook 'company-mode-hook
           (lambda ()
             (diminish 'company-mode)
