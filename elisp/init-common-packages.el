@@ -46,7 +46,6 @@
      (exec-path-from-shell-initialize)
      ))
 
-
 (use-package fzf
   :ensure t)
 
@@ -183,19 +182,6 @@
   (("M-j" . pyim-convert-string-at-point) ;与 pyim-probe-dynamic-english 配合
    ("C-;" . pyim-delete-word-from-personal-buffer)))
 
-;;(use-package highlight-indent-guides
-;;  :ensure t
-;;  :config
-;;  (setq highlight-indent-guides-method 'character)
-;;  (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-;;  )
-
-;;(use-package cnfonts
-;;  :ensure t
-;;  :config
-;;  (cnfonts-enable))
-;;
-
 (use-package multi-term
   :defer t
   :load-path "third_party/multi-term/"
@@ -258,13 +244,6 @@
 
 ;; 当我们想启用这个 mode 的时候，人肉运行 cnfonts-enable
 (use-package cnfonts)
-
-(use-package highlight-indent-guides
-  :ensure t
-  :hook ((prog-mode . highlight-indent-guides-mode))
-  :config
-  (setq highlight-indent-guides-method 'character)
-  )
 
 (use-package markdown-toc
   :ensure t)
