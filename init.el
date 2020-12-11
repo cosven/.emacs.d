@@ -7,9 +7,7 @@
 (add-hook 'after-init-hook #'(lambda ()
                                ;; restore after startup
                                (setq gc-cons-threshold 800000)))
-(setq inhibit-startup-screen t
-      package-enable-at-startup nil)
-
+(setq package-enable-at-startup nil)
 (setq package-archives '(("gnu"   . "http://elpa.emacs-china.org/gnu/")
                          ("melpa" . "http://elpa.emacs-china.org/melpa/")))
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
