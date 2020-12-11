@@ -23,7 +23,7 @@
   :config
   :bind
   (:map global-map
-        ("C-s" . 'swiper)))
+        ("C-s" . 'swiper-isearch)))
 
 (use-package counsel
   :ensure t
