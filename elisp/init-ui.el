@@ -28,12 +28,12 @@
 
   (cond ((eq system-type 'darwin)
          (menu-bar-mode -1)
-         (set-fontset-font t nil (font-spec :family "Apple Color Emoji") nil 'append)
+         ;; (set-fontset-font t nil (font-spec :family "Apple Color Emoji") nil 'append)
          ;; (set-face-attribute 'default nil :font "Fira Code 14"))
          ;; (set-face-attribute 'default nil :font "Source Code Pro for Powerline 13")
 
          ;; 使用 emacsclient + daemon 模式启动后，字体不会生效，
-         (setq default-frame-alist '((font . "Monaco-13"))))
+         (setq default-frame-alist '((font . "Monaco-12"))))
         ;; ((eq system-type 'gnu/linux)
         ;;  (set-face-attribute 'default nil :font "Ubuntu Mono 13"))
         ))
