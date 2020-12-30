@@ -26,6 +26,7 @@
 (setq-default tramp-inline-compress-start-size 1048576)  ;; 1KB
 (setq-default tramp-copy-size-limit 268435456)  ;; 256KB
 (setq-default column-number-mode t)
+(setq-default fill-column 80)
 
 ;; Enable mouse support
 (unless window-system
