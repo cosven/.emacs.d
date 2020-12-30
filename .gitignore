@@ -23,6 +23,7 @@ elpa/
 
 # Emacs config file
 recentf
+tramp
 
 # Emacs eshell data
 eshell/

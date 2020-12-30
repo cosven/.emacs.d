@@ -50,10 +50,12 @@
               ("M-'" . (lambda ()
                          (interactive)
                          ;; toggle lsp ui doc frame
-                         (if (lsp-ui-doc--visible-p)
+                         (if (or (and (overlayp lsp-ui-doc--inline-ov)
+                                      (overlay-buffer lsp-ui-doc--inline-ov))
+                                 (and (lsp-ui-doc--get-frame)
+                                      (frame-visible-p (lsp-ui-doc--get-frame))))
                              (lsp-ui-doc-hide)
-                           (lsp-ui-doc-show)
-                           ))))
+                           (lsp-ui-doc-show)))))
   )
 
 (use-package company-lsp

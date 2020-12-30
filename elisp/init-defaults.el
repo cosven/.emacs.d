@@ -40,6 +40,7 @@
 (electric-pair-mode -1)
 (show-paren-mode 1)
 (which-function-mode -1)
+(abbrev-mode -1)
 (recentf-mode)
 
 (when (eq system-type 'darwin) ;; mac specific settings
