@@ -23,17 +23,13 @@
           (clojurescript-mode . lsp-deferred))
   :commands (lsp lsp-deferred)
   :config
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-tramp-connection "~/.cargo/bin/rls")
-                    :major-modes '(rust-mode)
-                    :remote? t
-                    :server-id 'rls-remote))
-  (lsp-register-client
-   (make-lsp-client :new-connection (lsp-tramp-connection
-                                     (lambda () (cons "~/go/bin/gopls" lsp-gopls-server-args)))
-                    :major-modes '(go-mode)
-                    :remote? t
-                    :server-id 'gopls-remote))
+  ;; lsp mode with tramp does not works well
+  ;; (lsp-register-client
+  ;;  (make-lsp-client :new-connection (lsp-tramp-connection
+  ;;                                    (lambda () (cons "~/go/bin/gopls" lsp-gopls-server-args)))
+  ;;                   :major-modes '(go-mode)
+  ;;                   :remote? t
+  ;;                   :server-id 'gopls-remote))
   (dolist (m '(clojure-mode
                clojurec-mode
                clojurescript-mode
@@ -76,6 +72,14 @@
   :hook ((c-mode c++-mode objc-mode) .
          (lambda () (require 'ccls) (lsp)))
   )
+
+(use-package lsp-python-ms
+  :ensure t
+  :init (setq lsp-python-ms-auto-install-server t)
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-python-ms)
+                          (lsp-deferred))))
+
 
 ;; 目前非常难用
 ;; (use-package dap-mode
