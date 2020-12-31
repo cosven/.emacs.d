@@ -13,14 +13,18 @@
   (lsp-signature-auto-activate nil)
   (lsp-signature-render-documentation nil)
 
+  (lsp-pyls-configuration-sources ["flake8"])
+
   (lsp-enable-snippet nil)
   (lsp-prefer-flymake nil)
   :hook  ((c++-mode . lsp-deferred)
           (go-mode . lsp-deferred)
+          (python-mode . lsp-deferred)
           (rust-mode . lsp-deferred)
           (clojure-mode . lsp-deferred)
           (clojurec-mode . lsp-deferred)
           (clojurescript-mode . lsp-deferred))
+
   :commands (lsp lsp-deferred)
   :config
   ;; lsp mode with tramp does not works well
@@ -70,14 +74,6 @@
   :hook ((c-mode c++-mode objc-mode) .
          (lambda () (require 'ccls) (lsp)))
   )
-
-(use-package lsp-python-ms
-  :ensure t
-  :init (setq lsp-python-ms-auto-install-server t)
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-python-ms)
-                          (lsp-deferred))))
-
 
 ;; 目前非常难用
 ;; (use-package dap-mode
