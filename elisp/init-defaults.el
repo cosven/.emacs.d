@@ -26,6 +26,7 @@
 (setq-default tramp-inline-compress-start-size 1048576)  ;; 1KB
 (setq-default tramp-copy-size-limit 268435456)  ;; 256KB
 (setq-default column-number-mode t)
+(setq-default fill-column 80)
 
 ;; Enable mouse support
 (unless window-system
@@ -39,6 +40,7 @@
 (electric-pair-mode -1)
 (show-paren-mode 1)
 (which-function-mode -1)
+(abbrev-mode -1)
 (recentf-mode)
 
 (when (eq system-type 'darwin) ;; mac specific settings

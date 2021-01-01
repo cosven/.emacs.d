@@ -1,54 +1,35 @@
+
+;;; Code:
+(use-package general :ensure t)
+
+;; https://github.com/noctuid/evil-guide
 (use-package evil
-  :defer t
   :ensure t
+  :custom
+  (evil-disable-insert-state-bindings t)
+  ;; (evil-insert-state-cursor 'box)
   :init
-  (add-hook 'evil-mode-hook
-            (lambda ()
-              (setq general-default-keymaps 'evil-normal-state-map)
-              (setq my-leader-default "<SPC>")
-              (general-define-key :prefix my-leader-default
-                                  "b" 'switch-to-buffer
-                                  "e" '(lambda ()
-                                         (interactive)
-                                         (find-file user-init-file))
-                                  "r" '(lambda ()
-                                         (interactive)
-                                         (load-file user-init-file))
-                                  )
-              (general-define-key
-               "<SPC> p" '(:keymap projectile-command-map :package projectile))
-              (general-define-key
-               "<SPC> g" '(:keymap magit-mode-map :package magit))
-              (general-define-key
-               "<SPC> f" '(:keymap fuo-mode-map :package fuo))
-
-              ;; neotree
-              (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-              (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-              (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
-              (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
-              (evil-define-key 'normal neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
-
-              ;;; evil normal state map
-              (define-key evil-normal-state-map "tt" 'neotree-toggle)
-              (define-key evil-normal-state-map "tb" 'imenu-list-smart-toggle)
-              (define-key evil-normal-state-map "f" 'counsel-git-grep)
-
-              ;; try to use emacs key in insert mode
-              (define-key evil-insert-state-map (kbd "\C-k") 'kill-line)
-              (define-key evil-insert-state-map (kbd "\C-d") 'delete-forward-char)
-              (define-key evil-insert-state-map (kbd "\C-a") 'move-beginning-of-line)
-              (define-key evil-insert-state-map (kbd "\C-e") 'move-end-of-line)
-              (define-key evil-insert-state-map (kbd "\C-n") 'next-line)
-              (define-key evil-insert-state-map (kbd "\C-p") 'previous-line)
-              (define-key evil-insert-state-map (kbd "\C-v") 'scroll-up-command)
-              (define-key evil-insert-state-map (kbd "\C-y") 'yank)
-
-              (setq-default evil-insert-state-cursor 'box)
-              (modify-syntax-entry ?_ "w")))
   :config
-  (evil-mode 0)
-  )
+  ;; define my-leader-map and keybindings
+  (defvar my-leader-map (make-sparse-keymap)
+    "Keymap for \"leader key\" shortcuts.")
+  (general-evil-setup)
+  (evil-set-leader 'normal "," t)
+  (general-nmap
+    "tt" 'treemacs
+    "f" 'grep-curword)
+  (general-nmap
+   :prefix "SPC"
+   :prefix-map 'my-leader-map
+   "b" 'switch-to-buffer
+   "e" '(lambda ()
+          (interactive)
+          (find-file user-init-file))
+   "o" 'other-window
+   "p" '(:keymap projectile-command-map :package projectile))
+
+  (modify-syntax-entry ?_ "w")
+  (evil-mode 1))
 
 (provide 'init-evil)
 ;;; init-evil ends here
