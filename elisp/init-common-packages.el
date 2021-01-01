@@ -36,9 +36,6 @@
                       "p" 'bm-previous
                       "m" 'bm-toggle))
 
-(use-package edit-server
-  :ensure t)
-
 (use-package exec-path-from-shell
    :ensure t
    :init
@@ -83,28 +80,28 @@
 (use-package goto-chg
   :ensure t)
 
-(use-package eyebrowse
-  :ensure t
-  :init
-  (setq eyebrowse-mode-line-style t)
-  (defun rename-eyebrowse-default-window ()
-    (interactive)
-    (eyebrowse-rename-window-config eyebrowse-default-workspace-slot "adhoc")
-    )
-  (add-hook 'eyebrowse-mode-hook 'rename-eyebrowse-default-window)
-  :config
-  (eyebrowse-mode t)
-  (eyebrowse-setup-opinionated-keys)
-  :custom-face
-  (eyebrowse-mode-line-active
-   ((t
-     (:inherit mode-line-emphasis
-               :foreground "systemBlueColor"
-               )
-     )))
-  :custom
-  (eyebrowse-mode-line-left-delimiter "[")
-  (eyebrowse-mode-line-right-delimiter "]"))
+;; (use-package eyebrowse
+;;   :ensure t
+;;   :init
+;;   (setq eyebrowse-mode-line-style t)
+;;   (defun rename-eyebrowse-default-window ()
+;;     (interactive)
+;;     (eyebrowse-rename-window-config eyebrowse-default-workspace-slot "adhoc")
+;;     )
+;;   (add-hook 'eyebrowse-mode-hook 'rename-eyebrowse-default-window)
+;;   :config
+;;   (eyebrowse-mode t)
+;;   (eyebrowse-setup-opinionated-keys)
+;;   :custom-face
+;;   (eyebrowse-mode-line-active
+;;    ((t
+;;      (:inherit mode-line-emphasis
+;;                :foreground "systemBlueColor"
+;;                )
+;;      )))
+;;   :custom
+;;   (eyebrowse-mode-line-left-delimiter "[")
+;;   (eyebrowse-mode-line-right-delimiter "]"))
 
 (use-package writeroom-mode
   :ensure t)
