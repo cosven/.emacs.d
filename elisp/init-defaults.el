@@ -27,6 +27,8 @@
 (setq-default tramp-copy-size-limit 268435456)  ;; 256KB
 (setq-default column-number-mode t)
 (setq-default fill-column 80)
+;; disable the version control
+(setq-default vc-handled-backends nil)
 
 ;; Enable mouse support
 (unless window-system
