@@ -4,9 +4,15 @@
 ;;; Code:
 
 ;; 虚拟环境管理
-(use-package pyvenv :ensure t)
+(use-package pyvenv
+  :ensure t)
 
-; (use-package flycheck-pycheckers :ensure t)
+;; 自动补全
+(use-package anaconda-mode
+  :hook python-mode
+  :ensure t)
+(use-package company-anaconda
+  :ensure t)
 
 (defun org-babel-execute:python2 (body params)
   "Execute BODY by python2 with PARAMS."
@@ -31,18 +37,8 @@
   (python-shell-send-string (string-trim (thing-at-point 'line)))
   )
 
-(setq python-shell-interpreter "python3")
-(setq python-shell-interpreter-args "-m IPython --simple-prompt -i")
-
-;; (add-hook 'python-mode-hook 'pyvenv-mode)
-(add-hook 'python-mode-hook
-          (lambda ()
-            (local-set-key [f6] 'run-py)
-            (local-set-key (kbd "C-x C-e") 'py-send-line)
-            ;; this may override eldoc shortcut
-            (local-set-key (kbd "C-c C-f") 'pydoc)
-            ))
-
+(setq-default python-shell-interpreter "python3")
+(setq-default python-shell-interpreter-args "-m IPython --simple-prompt -i")
 ;; (with-eval-after-load 'flycheck
 ;;   (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))
 
@@ -56,8 +52,21 @@
 ;;
 ;; 另外，当我们使用 pyvenv 激活某个虚拟环境时，如果当前环境存在 pylint 模块，
 ;; flycheck 会自动切换成 python -m pylint 模式执行。
-(setq flycheck-python-pylint-executable "pylint")
-(setq flycheck-python-flake8-executable "flake8")
+(setq-default flycheck-python-pylint-executable "pylint")
+(setq-default flycheck-python-flake8-executable "flake8")
+
+(eval-after-load "company"
+  '(add-to-list 'company-backends 'company-anaconda))
+
+(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
+;; (add-hook 'python-mode-hook 'pyvenv-mode)
+(add-hook 'python-mode-hook
+          (lambda ()
+            (local-set-key [f6] 'run-py)
+            (local-set-key (kbd "C-x C-e") 'py-send-line)
+            ;; this may override eldoc shortcut
+            (local-set-key (kbd "C-c C-f") 'pydoc)
+            ))
 
 (provide 'init-python)
 ;;; init-python ends here
