@@ -20,7 +20,7 @@
 
   :hook  ((c++-mode . lsp-deferred)
           (go-mode . lsp-deferred)
-          (python-mode . lsp-deferred)
+          ;; (python-mode . lsp-deferred)
           (rust-mode . lsp-deferred)
           (clojure-mode . lsp-deferred)
           (clojurec-mode . lsp-deferred)
