@@ -39,7 +39,6 @@
 ;;(require 'init-helm)
 (require 'init-python)
 (require 'init-web)
-(require 'init-evil)
 (require 'init-fuo)
 (require 'init-org)
 ;; (require 'init-awesome-tab)
@@ -48,6 +47,7 @@
 (require 'init-lsp)
 ;; (require 'init-snails)
 ;; (require 'init-mode-line)
+(require 'init-evil)
 
 ;; (server-start)
 (setq custom-file "~/.emacs-custom.el")

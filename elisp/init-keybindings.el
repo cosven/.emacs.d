@@ -1,6 +1,8 @@
 
 ;;; Code:
 
+(use-package general :ensure t)
+
 ;; 定义 M-m 前缀，
 (define-prefix-command 'm-m-map)
 (global-set-key (kbd "M-m") 'm-m-map)
@@ -70,6 +72,31 @@
   (find-file "~/cosven.github.io/index.org"))
 (global-set-key (kbd "C-c t") 'mwiki)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(defvar my-buffer-map (make-sparse-keymap)
+  "Keymap for operating buffers.")
+(defvar my-flycheck-map (make-sparse-keymap)
+  "Keymap for flycheck buffers.")
+(defvar my-leader-map (make-sparse-keymap)
+  "Keymap for \"leader key\" shortcuts.")
+(general-define-key
+ :keymaps 'my-buffer-map
+ "b" 'switch-to-buffer
+ "l" 'ibuffer)
+(general-define-key
+ :keymaps 'my-flycheck-map
+ "n" 'flycheck-next-error
+ "p" 'flycheck-previous-error
+ "o" 'flycheck-list-errors)
+(general-define-key
+ :prefix-map 'my-leader-map
+ "e" '(lambda ()
+        (interactive)
+        (find-file user-init-file))
+ "o" 'other-window
+ ;; prefix key for mode map
+ "b" '(:keymap my-buffer-map)
+ "p" '(:keymap projectile-command-map :package projectile))
 
 (provide 'init-keybindings)
 ;;; init-keybindings ends here
