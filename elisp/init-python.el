@@ -8,11 +8,14 @@
   :ensure t)
 
 ;; 自动补全
-(use-package anaconda-mode
-  :hook python-mode
-  :ensure t)
-(use-package company-anaconda
-  :ensure t)
+;; (use-package anaconda-mode
+;;   :hook python-mode
+;;   :ensure t)
+;; (use-package company-anaconda
+;;   :ensure t)
+;; (eval-after-load "company"
+;;   '(add-to-list 'company-backends 'company-anaconda))
+;; (add-hook 'python-mode-hook 'anaconda-eldoc-mode)
 
 (defun org-babel-execute:python2 (body params)
   "Execute BODY by python2 with PARAMS."
@@ -55,11 +58,6 @@
 (setq-default flycheck-python-pylint-executable "pylint")
 (setq-default flycheck-python-flake8-executable "flake8")
 
-(eval-after-load "company"
-  '(add-to-list 'company-backends 'company-anaconda))
-
-(add-hook 'python-mode-hook 'anaconda-eldoc-mode)
-;; (add-hook 'python-mode-hook 'pyvenv-mode)
 (add-hook 'python-mode-hook
           (lambda ()
             (local-set-key [f6] 'run-py)
