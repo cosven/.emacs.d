@@ -37,8 +37,8 @@
 (global-set-key (kbd "M-m f") 'grep-curword)
 
 ;; awesome-tab 配置
-(global-set-key [f3] 'awesome-tab-backward)
-(global-set-key [f4] 'awesome-tab-forward)
+(global-set-key [f3] 'tab-previous)
+(global-set-key [f4] 'tab-next)
 
 ;; xref 配置
 (global-set-key (kbd "M-.") 'xref-find-definitions)

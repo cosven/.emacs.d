@@ -30,6 +30,7 @@
 (require 'init-defaults)
 (require 'init-ui)
 (require 'init-common-packages)
+(require 'init-vc)
 ;; (require 'init-sidebar)
 (require 'init-treemacs)
 (require 'init-themes)
