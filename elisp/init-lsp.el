@@ -12,6 +12,7 @@
   ;; https://github.com/emacs-lsp/lsp-mode/issues/1223
   (lsp-signature-auto-activate nil)
   (lsp-signature-render-documentation nil)
+  (lsp-headerline-breadcrumb-enable nil)
   (lsp-enable-snippet nil)
   (lsp-prefer-flymake nil)
 
