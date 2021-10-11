@@ -20,7 +20,6 @@
 
   :hook  ((c++-mode . lsp-deferred)
           (go-mode . lsp-deferred)
-          (python-mode . lsp-deferred)
           (rust-mode . lsp-deferred)
           (clojure-mode . lsp-deferred)
           (clojurec-mode . lsp-deferred)
@@ -60,12 +59,11 @@
                            (lsp-ui-doc-show)))))
   )
 
-(use-package company-lsp
-  :defer t
+(use-package lsp-pyright
   :ensure t
-  :config
-  (push 'company-lsp company-backends))
-
+  :hook (python-mode . (lambda ()
+                         (require 'lsp-pyright)
+                         (lsp))))
 
 ;; ccls 包加载比较慢，defer
 (use-package ccls

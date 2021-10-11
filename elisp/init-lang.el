@@ -64,8 +64,8 @@
   :ensure t
   )
 
-(use-package cider
-  :ensure t)
+;; (use-package cider
+;;   :ensure t)
 
 (provide 'init-lang)
 ;;; init-lang ends here
