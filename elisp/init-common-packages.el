@@ -252,6 +252,15 @@
 (use-package markdown-toc
   :ensure t)
 
+(use-package undo-tree
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-undo-tree-mode))
+
+(use-package origami
+  :ensure t
+  )
+
 
 (provide 'init-common-packages)
 ;;; init-common-packages.el ends here

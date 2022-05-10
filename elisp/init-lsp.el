@@ -74,6 +74,16 @@
          (lambda () (require 'ccls) (lsp)))
   )
 
+(use-package lsp-treemacs
+  :defer t
+  :ensure t
+  )
+
+(use-package lsp-origami
+  :ensure t
+  :config
+  (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable))
+
 ;; 目前非常难用
 ;; (use-package dap-mode
 ;;   :ensure t

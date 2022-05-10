@@ -15,13 +15,12 @@
 ;; (global-set-key (kbd "M-m t n") 'multi-term-next)
 ;; (global-set-key (kbd "M-m t p") 'multi-term-prev)
 
-;; M-m z 为折叠命令前缀
-(global-set-key (kbd "M-m z c") 'hs-hide-block)
-(global-set-key (kbd "M-m z o") 'hs-show-block)
-(global-set-key (kbd "M-m z R") 'hs-show-all)
-(global-set-key (kbd "M-m z r") 'hs-show-level)
-(global-set-key (kbd "M-m z M") 'hs-hide-all)
-(global-set-key (kbd "M-m z m") 'hs-hide-level)
+;; M-m z 为折叠命令前缀。
+(global-set-key (kbd "M-m z z") 'origami-recursively-toggle-node)
+(global-set-key (kbd "M-m z a") 'origami-toggle-all-nodes)
+(global-set-key (kbd "M-m z f") 'origami-show-only-node)
+;; 由于折叠在长文件中经常需要，所以尝试给它一个方便的快捷键。
+(global-set-key (kbd "C-c TAB") 'origami-recursively-toggle-node)
 
 ;; Emacs 工作流：frame vs window
 ;; http://ergoemacs.org/emacs/emacs_effective_windows_management.html
