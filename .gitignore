@@ -25,8 +25,11 @@ elpa/
 recentf
 tramp
 
-# Emacs eshell data
+# Emacs plugins data.
 eshell/
+# Flycheck tmp files.
+elisp/flycheck_*.el
+
 
 # Emacs anaconda data
 anaconda-mode/
