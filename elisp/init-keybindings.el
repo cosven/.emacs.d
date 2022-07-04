@@ -11,7 +11,7 @@
 (global-set-key (kbd "M-m g") 'magit-status)
 
 ;; M-m t 应该为 term 相关命令的前缀
-(global-set-key (kbd "C-`") 'vterm-toggle)
+(global-set-key (kbd "M-m t") 'vterm-toggle)
 ;; (global-set-key (kbd "M-m t n") 'multi-term-next)
 ;; (global-set-key (kbd "M-m t p") 'multi-term-prev)
 

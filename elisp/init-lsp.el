@@ -6,6 +6,9 @@
   :init
   (setq lsp-eldoc-hook nil)
   :custom
+  ;; 各种参数的配置强烈建议参考这个文档
+  ;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
+  ;;
   ;; try to disable automatic-doc-help in echo erea
   ;; when it is enabled, lsp will send requests to lsp-server
   ;; when cursor is moved, which may block the editor
@@ -13,6 +16,14 @@
   (lsp-signature-auto-activate nil)
   (lsp-signature-render-documentation nil)
   (lsp-headerline-breadcrumb-enable nil)
+  ;; 举个例子，在使用 rust-analyzer 的时候，codeAction 可能会比较慢，
+  ;; 从而导致移动光标有点卡顿（其实不确定是不是 codeAction 的锅）。
+  (lsp-modeline-code-actions-enable nil)
+  ;; 由于 flycheck 也会把诊断信息显示在 modeline 上，
+  ;; 并且不是很方便把 flycheck 的诊断信息隐藏起来，所以只能把 lsp
+  ;; 的诊断信息先隐藏了。
+  (lsp-modeline-diagnostics-enable nil)
+  (lsp-lens-enable nil)
   (lsp-enable-snippet nil)
   (lsp-prefer-flymake nil)
 
@@ -44,8 +55,12 @@
 (use-package lsp-ui
   :ensure t
   :init
-  (setq lsp-ui-doc-enable nil)
+  (setq lsp-ui-doc-enable t)
+
   (setq lsp-ui-sideline-enable nil)
+  (setq lsp-ui-sideline-show-diagnostics t)
+  (setq lsp-ui-sideline-show-hover nil)
+  (setq lsp-ui-sideline-show-code-actions nil)
   :commands lsp-ui-mode
   :config
   :bind (:map lsp-ui-mode-map
@@ -85,14 +100,22 @@
   (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable))
 
 ;; 目前非常难用
-;; (use-package dap-mode
-;;   :ensure t
-;;   :config
-;;   ;; (dap-mode 1)
-;;   ;; (dap-ui-mode 1)
-;;   ;; (require 'dap-lldb)
-;;   (setq dap-lldb-debug-program `("lldb-vscode"))
-;;   )
+(use-package dap-mode
+  :ensure t
+  :config
+  (dap-mode 1)
+  ;; (dap-ui-mode 1)
+  ;; (require 'dap-lldb)
+  ;; (setq dap-lldb-debug-program `("lldb-vscode"))
+  (dap-register-debug-template "Rust::GDB Run Configuration"
+                             (list :type "gdb"
+                                   :request "launch"
+                                   :name "GDB::Run"
+                           :gdbpath "rust-gdb"
+                                   :target nil
+                                   :cwd nil))
+  )
+
 ;;
 (provide 'init-lsp)
 
