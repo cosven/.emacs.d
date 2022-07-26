@@ -5,6 +5,7 @@
 
 (setq-default inhibit-startup-screen t)
 (setq-default cursor-type 'box)
+(setq-default visible-bell t)
 (setq-default truncate-lines t)
 (setq-default eww-search-prefix "https://www.google.com/search?q=")
 ;; (setq-default python-shell-completion-native-enable nil)
