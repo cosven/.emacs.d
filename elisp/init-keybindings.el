@@ -16,7 +16,8 @@
 ;; (global-set-key (kbd "M-m t p") 'multi-term-prev)
 
 ;; M-m z 为折叠命令前缀。
-(global-set-key (kbd "M-m z z") 'origami-recursively-toggle-node)
+(global-set-key (kbd "M-m z z") 'origami-toggle-node)
+(global-set-key (kbd "M-m z Z") 'origami-recursively-toggle-node)
 (global-set-key (kbd "M-m z a") 'origami-toggle-all-nodes)
 (global-set-key (kbd "M-m z f") 'origami-show-only-node)
 ;; 由于折叠在长文件中经常需要，所以尝试给它一个方便的快捷键。
