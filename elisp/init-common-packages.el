@@ -29,20 +29,25 @@
 ;;                       "r" 'imenu-list-refresh))
 ;;
 
-(use-package bm
-  :ensure t
-  :init
-  (setq bm-cycle-all-buffers t)
-  :general
-  (general-define-key :prefix "C-c m"
-                      "n" 'bm-next
-                      "p" 'bm-previous
-                      "m" 'bm-toggle))
+;; bm 的问题在于 bm 没有名称标识，bm 打多了，就忘记了。
+;; 而 counsel-bm 相比要更有优势。因此先不用了。counsel-bm 调用的是内置的 bookmark 功能。
+;; (use-package bm
+;;   :ensure t
+;;   :init
+;;   (setq bm-cycle-all-buffers t)
+;;   :general
+;;   (general-define-key :prefix "C-c m"
+;;                       "n" 'bm-next
+;;                       "p" 'bm-previous
+;;                       "m" 'bm-toggle))
 
 (use-package exec-path-from-shell
    :ensure t
    :init
    (when (memq window-system '(mac ns x))
+     ;; 配合 rcfiles shellrc 中对 SSH_AUTH_SOCK 的初始化。
+     ;; 这样以来，ssh 相关操作就不需要再手动给私钥输入密码了。
+     (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
      (exec-path-from-shell-initialize)
      ))
 
@@ -261,9 +266,11 @@
   :config
   (add-hook 'after-init-hook 'global-undo-tree-mode))
 
-(use-package origami
-  :ensure t
-  )
+;; 这个东西和 lsp 连用的时候，有时候会导致光标移动卡顿，不太能接受。
+;; 不建议使用，建议找一个更可靠的折叠方案。
+;; (use-package origami
+;;   :ensure t
+;;   )
 
 ;; 虽然 doom-modeline 有一些精简，但感觉还没有到不得不精简的时候。
 ;; (use-package doom-modeline
