@@ -263,6 +263,8 @@
 
 (use-package undo-tree
   :ensure t
+  :init
+  (setq undo-tree-auto-save-history nil)
   :config
   (add-hook 'after-init-hook 'global-undo-tree-mode))
 
