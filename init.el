@@ -36,19 +36,27 @@
 (require 'init-themes)
 (require 'init-lang)
 (require 'init-ivy-family)
+
 ;;(use-package smex :ensure t :bind (:map global-map ("M-x" . 'smex)))
 ;;(require 'init-helm)
+
 (require 'init-python)
-(require 'init-web)
+
+;; 很少进行前端相关开发，因此注释掉。
+;; (require 'init-web)
+
 (require 'init-fuo)
 (require 'init-org)
 ;; (require 'init-awesome-tab)
 (require 'init-diminish)
 (require 'init-keybindings)
 (require 'init-lsp)
+
 ;; (require 'init-snails)
 ;; (require 'init-mode-line)
-(require 'init-evil)
+
+;; 很少用到 evil，所以注释掉。
+;; (require 'init-evil)
 
 ;; (server-start)
 (setq custom-file "~/.emacs-custom.el")

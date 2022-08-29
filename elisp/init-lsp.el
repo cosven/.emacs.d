@@ -49,29 +49,26 @@
   ;;
 
   ;; 遇到了几个问题，其中这个比较致命:
+  ;;
   ;;   1. https://github.com/emacs-lsp/lsp-mode/issues/3491
+  ;;      UPDATE(2022-08-29):
+  ;;      下面这个方法是有用的，但不是默认可用，需要很多折腾。
+  ;;      https://github.com/m-fleury/isabelle-emacs/commit/edf782c2b91692d5ede9cbce46be85ee0ed652d9
+  ;;
   ;;   2. 在 macOS 上（不确定在其它系统上是否有此问题）
   ;;      开启 lsp 的时候，它会让我用当前用户去登录远端机器。
   ;;      但其实我已经在 ~/.ssh/config 指定了用其它用户名来登录。
   ;;
-  ;;      把 .emacs.d 文件夹移除后，发现问题可以解决，应该是某个缓存。
+  ;;      UPDATE: 把 .emacs.d 文件夹移除后，发现问题可以解决，应该是某个缓存。
   ;;      不过我尝试过 grep -R，但并没有发现问题所在。
   ;;
-  (with-eval-after-load "lsp-rust"
-    (lsp-register-client
-     (make-lsp-client
-      :new-connection (lsp-tramp-connection "rust-analyzer")
-      :remote? t
-      :major-modes '(rust-mode rustic-mode)
-      :initialization-options 'lsp-rust-analyzer--make-init-options
-      :notification-handlers (ht<-alist lsp-rust-notification-handlers)
-      :action-handlers (ht ("rust-analyzer.runSingle" #'lsp-rust--analyzer-run-single))
-      :library-folders-fn (lambda (_workspace) lsp-rust-analyzer-library-directories)
-      :after-open-fn (lambda ()
-                       (when lsp-rust-analyzer-server-display-inlay-hints
-                         (lsp-rust-analyzer-inlay-hints-mode)))
-      :ignore-messages nil
-      :server-id 'rust-analyzer-remote)))
+  ;; (with-eval-after-load "lsp-rust"
+  ;;   (lsp-register-client
+  ;;    (make-lsp-client
+  ;;     :new-connection (lsp-tramp-connection "rust-analyzer")
+  ;;     :remote? t
+  ;;     :major-modes '(rust-mode rustic-mode)
+  ;;     :server-id 'rust-analyzer-remote)))
 
   (dolist (m '(clojure-mode
                clojurec-mode
@@ -123,27 +120,30 @@
   :ensure t
   )
 
-(use-package lsp-origami
-  :ensure t
-  :config
-  (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable))
+;; 这个东西和 lsp 连用的时候，有时候会导致光标移动卡顿，不太能接受。
+;; 不建议使用，建议找一个更可靠的折叠方案。
+;;
+;; (use-package lsp-origami
+;;   :ensure t
+;;   :config
+;;   (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable))
 
-;; 目前非常难用
-(use-package dap-mode
-  :ensure t
-  :config
-  (dap-mode 1)
-  ;; (dap-ui-mode 1)
-  ;; (require 'dap-lldb)
-  ;; (setq dap-lldb-debug-program `("lldb-vscode"))
-  (dap-register-debug-template "Rust::GDB Run Configuration"
-                             (list :type "gdb"
-                                   :request "launch"
-                                   :name "GDB::Run"
-                           :gdbpath "rust-gdb"
-                                   :target nil
-                                   :cwd nil))
-  )
+;; 目前非常难用，并且实践发现很少使用。
+;; (use-package dap-mode
+;;   :ensure t
+;;   :config
+;;   (dap-mode 1)
+;;   ;; (dap-ui-mode 1)
+;;   ;; (require 'dap-lldb)
+;;   ;; (setq dap-lldb-debug-program `("lldb-vscode"))
+;;   (dap-register-debug-template "Rust::GDB Run Configuration"
+;;                              (list :type "gdb"
+;;                                    :request "launch"
+;;                                    :name "GDB::Run"
+;;                            :gdbpath "rust-gdb"
+;;                                    :target nil
+;;                                    :cwd nil))
+;;   )
 
 ;;
 (provide 'init-lsp)

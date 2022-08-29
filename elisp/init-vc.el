@@ -5,6 +5,11 @@
   :ensure t
   )
 
+(use-package diff-hl
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-diff-hl-mode))
+
 (use-package blamer
   :ensure t)
 

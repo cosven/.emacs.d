@@ -51,8 +51,8 @@
      (exec-path-from-shell-initialize)
      ))
 
-(use-package fzf
-  :ensure t)
+;; (use-package fzf
+;;   :ensure t)
 
 (use-package magit
   :defer t
@@ -108,8 +108,9 @@
 ;;   (eyebrowse-mode-line-left-delimiter "[")
 ;;   (eyebrowse-mode-line-right-delimiter "]"))
 
-(use-package writeroom-mode
-  :ensure t)
+;; 很少用到这个插件，因此注释掉。
+;; (use-package writeroom-mode
+;;   :ensure t)
 
 (use-package goto-chg
   :ensure t
@@ -125,16 +126,6 @@
 (use-package all-the-icons
   :ensure t)
 
-(use-package git-gutter
-  :ensure t
-  :config
-  (global-git-gutter-mode))
-
-
-(use-package diff-hl
-  :ensure t
-  :config
-  (add-hook 'after-init-hook 'global-diff-hl-mode))
 
 ;; 实践发现这个功能用得少，所以 disable 这个插件。
 ;; (use-package pyim
@@ -228,7 +219,7 @@
 ;;
 ;; (use-package vterm
 ;;   :ensure t)
-;; 
+;;
 ;; (use-package vterm-toggle
 ;;   :ensure t)
 
