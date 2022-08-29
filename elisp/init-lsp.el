@@ -49,23 +49,26 @@
   ;;
 
   ;; 遇到了几个问题，其中这个比较致命:
-  ;;   https://github.com/emacs-lsp/lsp-mode/issues/3491
+  ;;   1. https://github.com/emacs-lsp/lsp-mode/issues/3491
+  ;;   2. 在 macOS 上（不确定在其它系统上是否有此问题）
+  ;;      开启 lsp 的时候，它会让我用当前用户去登录远端机器。
+  ;;      但其实我已经在 ~/.ssh/config 指定了用其它用户名来登录。
   ;;
-  ;; (with-eval-after-load "lsp-rust"
-  ;;   (lsp-register-client
-  ;;    (make-lsp-client
-  ;;     :new-connection (lsp-tramp-connection "rust-analyzer")
-  ;;     :remote? t
-  ;;     :major-modes '(rust-mode rustic-mode)
-  ;;     :initialization-options 'lsp-rust-analyzer--make-init-options
-  ;;     :notification-handlers (ht<-alist lsp-rust-notification-handlers)
-  ;;     :action-handlers (ht ("rust-analyzer.runSingle" #'lsp-rust--analyzer-run-single))
-  ;;     :library-folders-fn (lambda (_workspace) lsp-rust-analyzer-library-directories)
-  ;;     :after-open-fn (lambda ()
-  ;;                      (when lsp-rust-analyzer-server-display-inlay-hints
-  ;;                        (lsp-rust-analyzer-inlay-hints-mode)))
-  ;;     :ignore-messages nil
-  ;;     :server-id 'rust-analyzer-remote)))
+  (with-eval-after-load "lsp-rust"
+    (lsp-register-client
+     (make-lsp-client
+      :new-connection (lsp-tramp-connection "rust-analyzer")
+      :remote? t
+      :major-modes '(rust-mode rustic-mode)
+      :initialization-options 'lsp-rust-analyzer--make-init-options
+      :notification-handlers (ht<-alist lsp-rust-notification-handlers)
+      :action-handlers (ht ("rust-analyzer.runSingle" #'lsp-rust--analyzer-run-single))
+      :library-folders-fn (lambda (_workspace) lsp-rust-analyzer-library-directories)
+      :after-open-fn (lambda ()
+                       (when lsp-rust-analyzer-server-display-inlay-hints
+                         (lsp-rust-analyzer-inlay-hints-mode)))
+      :ignore-messages nil
+      :server-id 'rust-analyzer-remote)))
 
   (dolist (m '(clojure-mode
                clojurec-mode
