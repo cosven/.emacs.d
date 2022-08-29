@@ -224,11 +224,16 @@
 ;;  )
 ;;
 
-(use-package vterm
-  :ensure t)
 
-(use-package vterm-toggle
-  :ensure t)
+;; 尝试了一段时间，放弃了
+;; 1. 经常要编译，用起来还是有点麻烦的。
+;; 2. 使用 vterm 的概率并不高，可以用 term 或者 eshell 代替。
+;;
+;; (use-package vterm
+;;   :ensure t)
+;; 
+;; (use-package vterm-toggle
+;;   :ensure t)
 
 (use-package ibuffer-vc
   :ensure t
