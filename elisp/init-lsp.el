@@ -54,6 +54,9 @@
   ;;      开启 lsp 的时候，它会让我用当前用户去登录远端机器。
   ;;      但其实我已经在 ~/.ssh/config 指定了用其它用户名来登录。
   ;;
+  ;;      把 .emacs.d 文件夹移除后，发现问题可以解决，应该是某个缓存。
+  ;;      不过我尝试过 grep -R，但并没有发现问题所在。
+  ;;
   (with-eval-after-load "lsp-rust"
     (lsp-register-client
      (make-lsp-client
