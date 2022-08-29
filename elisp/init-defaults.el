@@ -36,10 +36,14 @@
   (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
   (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
 
+;; 加速滚动速度
+(setq-default mouse-wheel-scroll-amount '(3 ((shift) . 1) ((control) . nil)))
+(setq-default mouse-wheel-progressive-speed t)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (global-auto-revert-mode)
 (xterm-mouse-mode 1)
+(mouse-wheel-mode 1)
 (electric-pair-mode -1)
 (show-paren-mode 1)
 (which-function-mode -1)
