@@ -85,9 +85,6 @@
         ("M-o" . 'ace-window))
   )
 
-(use-package goto-chg
-  :ensure t)
-
 ;; (use-package eyebrowse
 ;;   :ensure t
 ;;   :init
@@ -245,10 +242,12 @@
                 (ibuffer-do-sort-by-alphabetic))))
   )
 
-(when (eq system-type 'darwin)
-  (use-package dash-at-point
-    :ensure t)
-  )
+;; 几乎没有用到过这个功能。
+;;
+;; (when (eq system-type 'darwin)
+;;   (use-package dash-at-point
+;;     :ensure t)
+;;   )
 
 (use-package projectile
   :ensure t
