@@ -1,3 +1,4 @@
+;;; init-lsp.el --- init LSP                            -*- lexical-binding: t; -*-
 
 ;;; Code:
 
@@ -69,6 +70,30 @@
   ;;     :remote? t
   ;;     :major-modes '(rust-mode rustic-mode)
   ;;     :server-id 'rust-analyzer-remote)))
+
+  (cl-defun lsp-find-locations-no-wait (method &optional extra &key display-action references?)
+    (lsp-request-async
+     method
+     (append (lsp--text-document-position-params) extra)
+     (lambda
+       (loc)
+       (if (seq-empty-p loc)
+           (lsp--error "Not found for: %s" (or (thing-at-point 'symbol t) ""))
+         (lsp-show-xrefs (lsp--locations-to-xref-items loc) display-action references?)))))
+
+  (cl-defun lsp-find-definition-no-wait (&key display-action)
+    (interactive)
+    (lsp-find-locations-no-wait "textDocument/definition") nil :display-action display-action)
+
+  (cl-defun lsp-find-references-no-wait (&optional exclude-declaration &key display-action)
+    (interactive "P")
+    (lsp-find-locations-no-wait
+     "textDocument/references"
+     (list
+      :context `(:includeDeclaration
+                 ,(lsp-json-bool (not (or exclude-declaration lsp-references-exclude-definition)))))
+     :display-action display-action
+     :references? t))
 
   (dolist (m '(clojure-mode
                clojurec-mode

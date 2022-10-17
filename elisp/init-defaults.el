@@ -41,6 +41,7 @@
 (setq-default mouse-wheel-progressive-speed t)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'prog-mode-hook #'hs-minor-mode)
 (global-auto-revert-mode)
 (xterm-mouse-mode 1)
 (mouse-wheel-mode 1)

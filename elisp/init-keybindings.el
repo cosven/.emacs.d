@@ -8,7 +8,6 @@
 (global-set-key (kbd "M-m") 'm-m-map)
 
 (global-set-key (kbd "M-m p") 'projectile-command-map)
-(global-set-key (kbd "M-m g") 'magit-status)
 
 ;; M-m t 应该为 term 相关命令的前缀
 (global-set-key (kbd "M-m t") 'vterm-toggle)
@@ -16,12 +15,14 @@
 ;; (global-set-key (kbd "M-m t p") 'multi-term-prev)
 
 ;; M-m z 为折叠命令前缀。
-(global-set-key (kbd "M-m z z") 'origami-toggle-node)
-(global-set-key (kbd "M-m z Z") 'origami-recursively-toggle-node)
-(global-set-key (kbd "M-m z a") 'origami-toggle-all-nodes)
-(global-set-key (kbd "M-m z f") 'origami-show-only-node)
-;; 由于折叠在长文件中经常需要，所以尝试给它一个方便的快捷键。
-(global-set-key (kbd "C-c TAB") 'origami-recursively-toggle-node)
+(global-set-key (kbd "M-m z z") 'hs-toggle-hiding)
+
+;; (global-set-key (kbd "M-m z z") 'origami-toggle-node)
+;; (global-set-key (kbd "M-m z Z") 'origami-recursively-toggle-node)
+;; (global-set-key (kbd "M-m z a") 'origami-toggle-all-nodes)
+;; (global-set-key (kbd "M-m z f") 'origami-show-only-node)
+;; ;; 由于折叠在长文件中经常需要，所以尝试给它一个方便的快捷键。
+;; (global-set-key (kbd "C-c TAB") 'origami-recursively-toggle-node)
 
 ;; Emacs 工作流：frame vs window
 ;; http://ergoemacs.org/emacs/emacs_effective_windows_management.html
@@ -43,6 +44,8 @@
 ;; xref 配置
 (global-set-key (kbd "M-.") 'xref-find-definitions)
 (global-set-key (kbd "M-?") 'xref-find-references)
+(global-set-key (kbd "M-m M-d") 'lsp-find-definition-no-wait)
+(global-set-key (kbd "M-m M-r") 'lsp-find-references-no-wait)
 
 ;; 配合 awesome-tab 使用
 ;; awesome-tab 上经常会显示很多 buffer，这时可以使用 f6 逐个 kill
