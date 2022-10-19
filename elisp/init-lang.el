@@ -64,6 +64,26 @@
   :ensure t
   )
 
+
+
+;; (use-package flycheck
+;;   :ensure t
+;;   :init
+;;   (setq flycheck-clang-language-standard "c++11")
+;;   :config
+;;   (add-hook 'after-init-hook #'global-flycheck-mode)
+;;   )
+
+(use-package eglot
+  :ensure t
+  :config
+  ;; Let eglot find the correct project root.
+  (defun my-projectile-project-find-function (dir)
+    (let ((root (projectile-project-root dir)))
+      (and root (cons 'transient root))))
+  (with-eval-after-load 'project
+    (add-to-list 'project-find-functions 'my-projectile-project-find-function)))
+
 ;; (use-package cider
 ;;   :ensure t)
 

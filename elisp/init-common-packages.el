@@ -61,14 +61,6 @@
   :ensure t
   )
 
-(use-package flycheck
-  :ensure t
-  :init
-  (setq flycheck-clang-language-standard "c++11")
-  :config
-  (add-hook 'after-init-hook #'global-flycheck-mode)
-  )
-
 (use-package company
   :ensure t
   :config
@@ -246,8 +238,7 @@
   (setq projectile-enable-caching t)
   (setq projectile-completion-system 'ivy)
   :config
-  (add-hook 'after-init-hook 'projectile-mode)
-  )
+  (add-hook 'after-init-hook 'projectile-mode))
 
 ;; 实践发现，这个 package 用的概率比较小，之前试用的时候体验也不是特别流畅。
 ;; 当我们想启用这个 mode 的时候，人肉运行 cnfonts-enable
