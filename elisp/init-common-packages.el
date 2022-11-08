@@ -5,6 +5,11 @@
 
 (use-package tramp
   :ensure t
+  :init
+  ;; (setq tramp-inline-compress-start-size 1048576)  ;; 1KB
+  ;; (setq tramp-copy-size-limit 268435456)  ;; 256KB
+  :custom
+  (tramp-use-ssh-controlmaster-options nil)
   :config
   ;; https://www.gnu.org/software/emacs/manual/html_node/tramp/Remote-programs.html
   ;; golang lsp-mode goto-definition 会调用 go 命令，而默认的 tramp-remote-path
