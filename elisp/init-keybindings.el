@@ -37,7 +37,6 @@
   (counsel-rg (thing-at-point 'symbol)))
 (global-set-key (kbd "M-m f") 'grep-curword)
 
-;; awesome-tab 配置
 (global-set-key [f3] 'tab-previous)
 (global-set-key [f4] 'tab-next)
 

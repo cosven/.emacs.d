@@ -57,12 +57,13 @@
 (use-package rust-mode
   :ensure t
   :init
-  (setq rust-format-on-save t)
-  )
+  (setq rust-format-on-save t))
 
 (use-package clojure-mode
-  :ensure t
-  )
+  :ensure t)
+
+(use-package kotlin-mode
+  :ensure t)
 
 ;; (use-package cider
 ;;   :ensure t)

@@ -12,6 +12,8 @@
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "third-elisp" user-emacs-directory))
+;; https://github.com/emacs-lsp/lsp-mode/issues/4054
+(add-to-list 'image-types 'svg)
 
 (defun require-or-install-pkg (pkg)
   "PKG is a package name."
@@ -30,6 +32,7 @@
 (require 'init-defaults)
 (require 'init-ui)
 (require 'init-common-packages)
+(require 'init-code)
 (require 'init-vc)
 ;; (require 'init-sidebar)
 (require 'init-treemacs)
@@ -56,7 +59,7 @@
 ;; (require 'init-mode-line)
 
 ;; 很少用到 evil，所以注释掉。
-;; (require 'init-evil)
+(require 'init-evil)
 
 ;; (server-start)
 (setq custom-file "~/.emacs-custom.el")
