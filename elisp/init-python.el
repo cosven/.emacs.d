@@ -3,9 +3,43 @@
 
 ;;; Code:
 
+;; Copied from spacemacs.
+(defun pyvenv-mode-set-local-virtualenv ()
+  "Set pyvenv virtualenv from \".venv\" by looking in parent directories.
+Handle \".venv\" being a virtualenv directory or a file specifying either
+absolute or relative virtualenv path. Relative path is checked relative to
+location of \".venv\" file, then relative to pyvenv-workon-home()."
+  (interactive)
+  (when-let* ((root-path (locate-dominating-file default-directory ".venv"))
+              (file-path (expand-file-name ".venv" root-path)))
+    (cond ((file-directory-p file-path)
+           (pyvenv-activate file-path)
+           (setq-local pyvenv-activate file-path))
+          (t (let* ((virtualenv-path-in-file
+                     (with-temp-buffer
+                       (insert-file-contents-literally file-path)
+                       (buffer-substring-no-properties (line-beginning-position)
+                                                       (line-end-position))))
+                    (virtualenv-abs-path
+                     (if (file-name-absolute-p virtualenv-path-in-file)
+                         virtualenv-path-in-file
+                       (format "%s/%s" root-path virtualenv-path-in-file))))
+               (cond ((file-directory-p virtualenv-abs-path)
+                      (pyvenv-activate virtualenv-abs-path)
+                      (setq-local pyvenv-activate virtualenv-abs-path))
+                     (t (pyvenv-workon virtualenv-path-in-file)
+                        (setq-local pyvenv-workon virtualenv-path-in-file))))))))
+
+
 ;; 虚拟环境管理
 (use-package pyvenv
-  :ensure t)
+  :ensure t
+  :init
+  ;; (add-hook 'pyvenv-post-activate-hooks '(lambda ()
+  ;;                                          (when (bound-and-true-p lsp-mode)
+  ;;                                            (lsp-restart-workspace))))
+  (add-hook 'python-mode-hook 'pyvenv-mode-set-local-virtualenv)
+  )
 
 ;; 自动补全
 ;; (use-package anaconda-mode
