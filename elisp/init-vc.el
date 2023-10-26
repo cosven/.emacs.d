@@ -1,6 +1,14 @@
 
 ;;; Code:
 
+
+(use-package magit
+  :defer t
+  :init
+  (setq ediff-split-window-function 'split-window-vertically)
+  :ensure t
+  )
+
 (use-package git-gutter
   :ensure t
   )

@@ -26,8 +26,6 @@
 (setq-default org-babel-python2-command "python")
 (setq-default column-number-mode t)
 (setq-default fill-column 80)
-;; disable the version control
-(setq-default vc-handled-backends nil)
 
 ;; Enable mouse support
 (unless window-system
@@ -47,6 +45,7 @@
 (show-paren-mode 1)
 (which-function-mode -1)
 (abbrev-mode -1)
+(scroll-bar-mode -1)
 (recentf-mode)
 
 (when (eq system-type 'darwin) ;; mac specific settings

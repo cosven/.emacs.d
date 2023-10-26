@@ -2,6 +2,12 @@
 
 ;;; Code:
 
+(use-package page-break-lines
+  :ensure t)
+
+(use-package all-the-icons
+  :ensure t)
+
 (defun mrecenter-current-frame ()
   "Frame 屏幕居中."
   (interactive)
@@ -43,8 +49,11 @@
 (init-ui-look)
 (mrecenter-current-frame)
 
-;; 这个配置可能会让 terminal 模式下的 emacs 渲染不正常！
-;; (add-hook 'after-make-frame-functions 'cb-after-make-frame)
+(defun cb-after-make-frame (frame)
+  "Disable scroll bar when Emacs frame is created."
+  (scroll-bar-mode -1))
+
+(add-hook 'after-make-frame-functions 'cb-after-make-frame)
 
 ;;(when (eq system-type 'darwin)
 ;;  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))

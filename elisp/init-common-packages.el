@@ -59,13 +59,6 @@
 ;; (use-package fzf
 ;;   :ensure t)
 
-(use-package magit
-  :defer t
-  :init
-  (setq ediff-split-window-function 'split-window-vertically)
-  :ensure t
-  )
-
 (use-package flycheck
   :ensure t
   :init
@@ -122,15 +115,6 @@
   :config
   (global-set-key (kbd "\C-c ;") 'goto-last-change)
   )
-
-;; ui related
-
-(use-package page-break-lines
-  :ensure t)
-
-(use-package all-the-icons
-  :ensure t)
-
 
 ;; 实践发现这个功能用得少，所以 disable 这个插件。
 ;; (use-package pyim

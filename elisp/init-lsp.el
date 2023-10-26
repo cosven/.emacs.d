@@ -130,7 +130,10 @@
   :ensure t
   :hook (python-mode . (lambda ()
                          (require 'lsp-pyright)
-                         (lsp))))
+                         (lsp)))
+  :custom
+  (lsp-pyright-multi-root nil)
+  )
 
 ;; ccls 包加载比较慢，defer
 (use-package ccls
