@@ -39,8 +39,8 @@
 (use-package avy
   :ensure t
   :config
-  (global-set-key (kbd "C-:") 'avy-goto-char)
-  (global-set-key (kbd "C-'") 'avy-goto-char-2)
+  (global-unset-key (kbd "C-'"))
+  (global-set-key (kbd "C-'") 'avy-goto-char)
 )
 
 

@@ -4,8 +4,8 @@
 (use-package general :ensure t)
 
 ;; 定义 M-m 前缀，
-(define-prefix-command 'm-m-map)
-(global-set-key (kbd "M-m") 'm-m-map)
+(define-prefix-command 'leader-map)
+(global-set-key (kbd "M-m") 'leader-map)
 
 (global-set-key (kbd "M-m p") 'projectile-command-map)
 
@@ -37,8 +37,11 @@
   (counsel-rg (thing-at-point 'symbol)))
 (global-set-key (kbd "M-m f") 'grep-curword)
 
-(global-set-key [f3] 'tab-previous)
-(global-set-key [f4] 'tab-next)
+(define-prefix-command 'my-tabbar-map)
+(global-set-key (kbd "C-t") 'my-tabbar-map)
+(global-set-key (kbd "C-t C-n") 'tab-next)
+(global-set-key (kbd "C-t C-p") 'tab-previous)
+(global-set-key (kbd "C-t C-t") 'tab-bar-switch-to-next-tab)
 
 ;; xref 配置
 (global-set-key (kbd "M-.") 'xref-find-definitions)
