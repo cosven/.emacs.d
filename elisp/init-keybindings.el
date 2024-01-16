@@ -8,6 +8,7 @@
 (global-set-key (kbd "M-m") 'leader-map)
 
 (global-set-key (kbd "M-m p") 'projectile-command-map)
+(global-set-key (kbd "M-p") 'projectile-find-file)
 
 ;; M-m t 应该为 term 相关命令的前缀
 (global-set-key (kbd "M-m t") 'vterm-toggle)
