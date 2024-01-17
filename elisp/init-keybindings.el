@@ -8,6 +8,7 @@
 (global-set-key (kbd "M-m") 'leader-map)
 
 (global-set-key (kbd "M-m p") 'projectile-command-map)
+;; M-p 这个组合键在特定的模式下有特定的功能，不适合作为全局快捷键。
 (global-set-key (kbd "M-p") 'projectile-find-file)
 
 ;; M-m t 应该为 term 相关命令的前缀
@@ -36,7 +37,9 @@
   (interactive)
   ;; http://ergoemacs.org/emacs/elisp_thing-at-point_problems.html
   (counsel-rg (thing-at-point 'symbol)))
-(global-set-key (kbd "M-m f") 'grep-curword)
+(global-set-key (kbd "M-m M-f") 'grep-curword)
+;; M-m f 这种组合键比较容易按错，也很容易收到拼音输入法的影响。
+(global-set-key (kbd "M-m f") 'format-all-buffer)
 
 (define-prefix-command 'my-tabbar-map)
 (global-set-key (kbd "C-t") 'my-tabbar-map)
