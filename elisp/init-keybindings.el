@@ -9,7 +9,9 @@
 
 (global-set-key (kbd "M-m p") 'projectile-command-map)
 ;; M-p 这个组合键在特定的模式下有特定的功能，不适合作为全局快捷键。
-(global-set-key (kbd "M-p") 'projectile-find-file)
+(global-set-key (kbd "s-p") 'projectile-command-map)
+(global-set-key (kbd "C-c p") 'projectile-command-map)
+(global-set-key (kbd "M-m M-p") 'projectile-find-file)
 
 ;; M-m t 应该为 term 相关命令的前缀
 (global-set-key (kbd "M-m t") 'vterm-toggle)
