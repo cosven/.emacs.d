@@ -42,10 +42,9 @@
          (setq default-frame-alist '((font . "Monaco-12")))
          ;; (set-fontset-font
          ;;  t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)
-        ;; ((eq system-type 'gnu/linux)
-        ;;  (set-face-attribute 'default nil :font "Ubuntu Mono 13"))
+         ((eq system-type 'gnu/linux)
+          (set-face-attribute 'default nil :font "Cascadia Code PL 10"))
         )))
-
 (init-ui-look)
 (mrecenter-current-frame)
 
