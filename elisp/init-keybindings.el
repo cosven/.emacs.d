@@ -4,10 +4,14 @@
 (use-package general :ensure t)
 
 ;; 定义 M-m 前缀，
-(define-prefix-command 'm-m-map)
-(global-set-key (kbd "M-m") 'm-m-map)
+(define-prefix-command 'leader-map)
+(global-set-key (kbd "M-m") 'leader-map)
 
 (global-set-key (kbd "M-m p") 'projectile-command-map)
+;; M-p 这个组合键在特定的模式下有特定的功能，不适合作为全局快捷键。
+(global-set-key (kbd "s-p") 'projectile-command-map)
+(global-set-key (kbd "C-c p") 'projectile-command-map)
+(global-set-key (kbd "M-m M-p") 'projectile-find-file)
 
 ;; M-m t 应该为 term 相关命令的前缀
 (global-set-key (kbd "M-m t") 'vterm-toggle)
@@ -35,10 +39,15 @@
   (interactive)
   ;; http://ergoemacs.org/emacs/elisp_thing-at-point_problems.html
   (counsel-rg (thing-at-point 'symbol)))
-(global-set-key (kbd "M-m f") 'grep-curword)
+(global-set-key (kbd "M-m M-f") 'grep-curword)
+;; M-m f 这种组合键比较容易按错，也很容易收到拼音输入法的影响。
+(global-set-key (kbd "M-m f") 'format-all-buffer)
 
-(global-set-key [f3] 'tab-previous)
-(global-set-key [f4] 'tab-next)
+(define-prefix-command 'my-tabbar-map)
+(global-set-key (kbd "C-t") 'my-tabbar-map)
+(global-set-key (kbd "C-t C-n") 'tab-next)
+(global-set-key (kbd "C-t C-p") 'tab-previous)
+(global-set-key (kbd "C-t C-t") 'tab-bar-switch-to-next-tab)
 
 ;; xref 配置
 (global-set-key (kbd "M-.") 'xref-find-definitions)

@@ -40,6 +40,11 @@
 
          ;; 使用 emacsclient + daemon 模式启动后，字体不会生效，
          (setq default-frame-alist '((font . "Monaco-12")))
+         ;; 把行高增高一点，不然代码看起来太挤了，有点难受，0.15 是参考 vscode 设置的。
+         ;; 文档说默认的 line-height 是根据字体计算出来的，vscode 也是这么说自己的，
+         ;; 但是默认值下，vscode 的行高明显比 emacs 要高。即使 vscode 的字体大小为 12，
+         ;; emacs 为 13，它的行高都要更高些。
+         (setq-default line-spacing 0.15)
          ;; (set-fontset-font
          ;;  t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)
          ((eq system-type 'gnu/linux)
