@@ -11,8 +11,7 @@
 ;; (setq-default python-shell-completion-native-enable nil)
 (setq-default help-window-select t)
 (setq vc-follow-symlinks t)
-(setq-default org-agenda-files '("~/Dropbox/life"
-                                 "~/Dropbox/public"))
+(setq-default org-agenda-files '("~/cosven.github.io"))
 (setq-default imenu-list-focus-after-activation t)
 (setq-default imenu-list-size 35)
 (setq-default org-log-done 'time)

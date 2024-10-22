@@ -21,6 +21,9 @@
 ;; M-m z 为折叠命令前缀。
 (global-set-key (kbd "M-m z z") 'hs-toggle-hiding)
 
+(global-set-key (kbd "M-m m") 'point-to-register)
+(global-set-key (kbd "M-m '") 'jump-to-register)
+
 ;; (global-set-key (kbd "M-m z z") 'origami-toggle-node)
 ;; (global-set-key (kbd "M-m z Z") 'origami-recursively-toggle-node)
 ;; (global-set-key (kbd "M-m z a") 'origami-toggle-all-nodes)
