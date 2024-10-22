@@ -34,6 +34,7 @@
   :hook  ((c++-mode . lsp-deferred)
           (go-mode . lsp-deferred)
           (rust-mode . lsp-deferred)
+          (groovy-mode . lsp-deferred)
           (clojure-mode . lsp-deferred)
           (clojurec-mode . lsp-deferred)
           (clojurescript-mode . lsp-deferred))
