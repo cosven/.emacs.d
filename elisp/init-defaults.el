@@ -47,13 +47,13 @@
 (scroll-bar-mode -1)
 (recentf-mode)
 
-(when (eq system-type 'darwin) ;; mac specific settings
-  (progn
-    (setq mac-option-modifier 'super)
-    (setq mac-command-modifier 'meta)
-    )
-  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
-  )
+;; (when (eq system-type 'darwin) ;; mac specific settings
+;;   (progn
+;;     (setq mac-option-modifier 'super)
+;;     (setq mac-command-modifier 'meta)
+;;     )
+;;   (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+;;   )
 
 
 (provide 'init-defaults)

@@ -47,9 +47,9 @@
          (setq-default line-spacing 0.15)
          ;; (set-fontset-font
          ;;  t 'symbol (font-spec :family "Apple Color Emoji") nil 'prepend)
-         ((eq system-type 'gnu/linux)
-          (set-face-attribute 'default nil :font "Cascadia Code PL 10"))
-        )))
+         ))
+  (cond ((eq system-type 'gnu/linux)
+         (set-face-attribute 'default nil :font "Cascadia Code PL 10"))))
 (init-ui-look)
 (mrecenter-current-frame)
 
