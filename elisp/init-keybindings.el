@@ -111,6 +111,9 @@
  ;; prefix key for mode map
  "b" '(:keymap my-buffer-map)
  "p" '(:keymap projectile-command-map :package projectile))
+(general-define-key
+ :prefix-map 'swiper-isearch-map
+ "C-SPC" #'swiper-isearch-thing-at-point)
 
 (provide 'init-keybindings)
 ;;; init-keybindings ends here
